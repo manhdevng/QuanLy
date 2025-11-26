@@ -1,0 +1,255 @@
+/* === 1. Biến và Cài đặt chung === */
+:root {
+  --primary-color: #007bff;
+  --text-color: #1f2937;
+  --light-text-color: #6b7280;
+  --border-color: #e5e7eb;
+  --bg-color: #f3f4f6;
+  --placeholder-color: #9ca3af;
+  --input-padding-y: 0.65rem;
+  --input-padding-x: 0.85rem;
+  --button-padding-y: 0.75rem;
+  --button-padding-x: 1.5rem;
+}
+
+body {
+  font-family: "Roboto", sans-serif; /* Đồng bộ font với project cũ */
+  margin: 0;
+  padding: 0 1rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  /* Bạn có thể thay ảnh nền ở đây */
+  background-image: url("img/aboutus.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Overlay mờ cho background body để text dễ đọc hơn */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+}
+
+.wrapper {
+  display: flex;
+  max-width: 1000px;
+  width: 100%;
+  margin: auto;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  background-color: white;
+  min-height: 600px;
+}
+
+/* === Panel Trái === */
+.left-panel {
+  width: 45%;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  position: relative;
+  /* Ảnh nền cho panel trái */
+  background-image: url("img/mission1.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Lớp phủ màu xanh đè lên ảnh panel trái */
+.left-panel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 63, 140, 0.8),
+    rgba(0, 123, 255, 0.8)
+  );
+  z-index: 1;
+}
+
+.left-content {
+  z-index: 2;
+  text-align: left;
+}
+
+.left-content h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.view-more-btn {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.view-more-btn:hover {
+  background: white;
+  color: var(--primary-color);
+}
+
+/* === Panel Phải === */
+.right-panel {
+  width: 55%;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.right-content {
+  width: 100%;
+  max-width: 24rem;
+}
+
+.form-title {
+  color: var(--text-color);
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #4b5563;
+}
+
+.input-group input {
+  width: 100%;
+  padding: var(--input-padding-y) var(--input-padding-x);
+  border: 1px solid var(--border-color);
+  border-radius: 0.375rem;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.btn-common {
+  width: 100%;
+  padding: var(--button-padding-y);
+  border-radius: 0.375rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 1rem;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+}
+
+.primary-btn {
+  background: linear-gradient(90deg, #003f8c, #007bff);
+  color: white;
+}
+.primary-btn:hover {
+  background: linear-gradient(90deg, #003366, #0056b3);
+  transform: translateY(-1px);
+}
+
+.secondary-btn {
+  background: white;
+  color: var(--primary-color);
+  border: 1px solid var(--border-color);
+  margin-top: 0.5rem;
+}
+.secondary-btn:hover {
+  background-color: #f9fafb;
+  border-color: var(--primary-color);
+}
+
+.switch-link {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--light-text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.switch-link::before,
+.switch-link::after {
+  content: "";
+  height: 1px;
+  background: #e5e7eb;
+  flex: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
+  .left-panel,
+  .right-panel {
+    width: 100%;
+    padding: 2rem;
+  }
+  .left-panel {
+    min-height: 200px;
+  }
+}
+
+/* Thông báo lỗi/thành công */
+.alert {
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+}
+.alert-danger {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #f87171;
+}
+.alert-success {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #4ade80;
+}
