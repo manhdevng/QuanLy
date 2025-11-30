@@ -48,6 +48,16 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+    <div class="card text-white bg-dark h-100 shadow-sm position-relative overflow-hidden" style="background-color: #343a40 !important;">
+        <div class="card-body">
+            <i class="fas fa-user-tag dashboard-card-icon"></i>
+            <h5 class="card-title">Phân quyền</h5>
+            <p class="card-text small">Cấp quyền cho chức vụ.</p>
+            <a href="admin_roles.php" class="btn btn-light btn-sm text-dark fw-bold stretched-link">Truy cập</a>
+        </div>
+    </div>
+</div>
 
             <div class="col-md-4">
                 <div class="card text-white bg-success h-100 shadow-sm">
@@ -58,6 +68,26 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+    <div class="card text-white bg-danger h-100 shadow-sm position-relative overflow-hidden">
+        <div class="card-body">
+            <i class="fas fa-file-invoice-dollar dashboard-card-icon"></i>
+            <h5 class="card-title">Chi tiêu</h5>
+            <p class="card-text small">Quản lý hóa đơn nội bộ.</p>
+            <a href="admin_expenses.php" class="btn btn-light btn-sm text-danger fw-bold stretched-link">Truy cập</a>
+        </div>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="card text-white bg-primary h-100 shadow-sm position-relative overflow-hidden" style="background: linear-gradient(45deg, #0d6efd, #0a58ca) !important;">
+        <div class="card-body">
+            <i class="fas fa-chart-line dashboard-card-icon"></i>
+            <h5 class="card-title">Báo cáo Tài chính</h5>
+            <p class="card-text small">Tổng hợp Lương & Chi tiêu.</p>
+            <a href="admin_financial_report.php" class="btn btn-light btn-sm text-primary fw-bold stretched-link">Truy cập</a>
+        </div>
+    </div>
+</div>
 
             <div class="col-md-4">
                 <div class="card text-white bg-warning h-100 shadow-sm">

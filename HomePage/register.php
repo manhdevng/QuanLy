@@ -1,7 +1,7 @@
 <?php
 require_once 'db_connect.php';
 
-$message = '';
+$message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $full_name = trim($_POST["full_name"]);
@@ -9,9 +9,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST["email"]);
     $password = $_POST["password"];
     $confirm_password = $_POST["confirm_password"];
-    $role = 'employee'; 
+    
+    // Mặc định đăng ký là Staff (ID = 4 trong bảng roles)
+    // Bạn có thể đổi thành 3 nếu muốn mặc định là Teacher
+    $role_id = 4; 
 
-    // Validate mật khẩu
     if ($password !== $confirm_password) {
         $message = "<div class='alert alert-danger'>Mật khẩu xác nhận không khớp!</div>";
     } else {
@@ -26,16 +28,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $message = "<div class='alert alert-danger'>Username hoặc Email đã tồn tại!</div>";
             } else {
                 $stmt->close();
-                // Insert
-                $insert_sql = "INSERT INTO users (username, password, email, full_name, role) VALUES (?, ?, ?, ?, ?)";
-                if($insert_stmt = $conn->prepare($insert_sql)){
+                
+                // 1. Insert vào bảng users
+                $sql = "INSERT INTO users (role_id, username, password, email, full_name, status) VALUES (?, ?, ?, ?, ?, 'active')";
+                if($insert_stmt = $conn->prepare($sql)){
                     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-                    $insert_stmt->bind_param("sssss", $username, $hashed_password, $email, $full_name, $role);
+                    $insert_stmt->bind_param("issss", $role_id, $username, $hashed_password, $email, $full_name);
                     
                     if($insert_stmt->execute()){
+                        $new_user_id = $conn->insert_id; // Lấy ID vừa tạo
+                        
+                        // 2. Tạo bản ghi hồ sơ chi tiết (employee_details)
+                        // Để tránh lỗi khi vào trang profile sau này
+                        $conn->query("INSERT INTO employee_details (user_id, start_date) VALUES ($new_user_id, CURRENT_DATE)");
+
                         $message = "<div class='alert alert-success'>Đăng ký thành công! <a href='login.php'>Đăng nhập ngay</a></div>";
                     } else {
-                        $message = "<div class='alert alert-danger'>Lỗi: " . $conn->error . "</div>";
+                        $message = "<div class='alert alert-danger'>Lỗi hệ thống: " . $conn->error . "</div>";
                     }
                     $insert_stmt->close();
                 }
@@ -51,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng Ký - Forcre.vn</title>
+    <title>Đăng Ký - English Center HR</title>
     <link rel="stylesheet" href="style_consult.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -59,15 +68,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="wrapper">
         <div class="left-panel">
             <div class="left-content">
-                <h1>Gia nhập đội ngũ!</h1>
-                <p>Tạo tài khoản để bắt đầu hành trình cùng chúng tôi.</p>
+                <h1>Chào mừng!</h1>
+                <p>Hệ thống quản lý nhân sự dành cho Trung tâm Anh ngữ.</p>
                 <a href="index.php" class="view-more-btn"><i class="fas fa-arrow-left"></i> Về Trang Chủ</a>
             </div>
         </div>
 
         <div class="right-panel">
             <div class="right-content">
-                <h2 class="form-title">Đăng Ký Mới</h2>
+                <h2 class="form-title">Đăng Ký Tài Khoản</h2>
                 
                 <?php echo $message; ?>
 
@@ -79,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     <div class="input-group">
                         <label>Tên đăng nhập</label>
-                        <input type="text" name="username" placeholder="user123" required>
+                        <input type="text" name="username" placeholder="username" required>
                     </div>
                     
                     <div class="input-group">
@@ -97,18 +106,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type="password" name="confirm_password" placeholder="Nhập lại mật khẩu" required>
                     </div>
                     
-                    <button type="submit" class="btn-common primary-btn">
-                        Đăng Ký
-                    </button>
+                    <button type="submit" class="btn-common primary-btn">Đăng Ký</button>
                 </form>
 
                 <div class="switch-link">
                     <span>Đã có tài khoản?</span>
                 </div>
 
-                <a href="login.php" class="btn-common secondary-btn">
-                    Đăng Nhập
-                </a>
+                <a href="login.php" class="btn-common secondary-btn">Đăng Nhập</a>
             </div>
         </div>
     </div>

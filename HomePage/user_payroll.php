@@ -2,15 +2,12 @@
 session_start();
 require_once 'db_connect.php';
 
-// Check quyền đăng nhập
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 }
 
 $user_id = $_SESSION['user_id'];
-
-// Lấy lịch sử lương
 $sql = "SELECT * FROM payroll WHERE user_id = ? ORDER BY month DESC";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
@@ -29,7 +26,7 @@ $result = $stmt->get_result();
 <body class="bg-light">
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2><i class="fas fa-file-invoice-dollar text-warning"></i> Bảng Lương Của Tôi</h2>
+            <h2><i class="fas fa-file-invoice-dollar text-warning"></i> Phiếu Lương Chi Tiết</h2>
             <a href="user_dashboard.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Quay lại</a>
         </div>
 
@@ -39,27 +36,38 @@ $result = $stmt->get_result();
                     <thead class="table-dark">
                         <tr>
                             <th>Tháng</th>
-                            <th>Ngày công</th>
-                            <th>Lương cơ bản</th>
-                            <th>Thưởng</th>
-                            <th>Khấu trừ</th>
-                            <th>Thực lĩnh</th>
-                            <th>Trạng thái</th>
+                            <th>Lương Cứng</th>
+                            <th>Phụ cấp</th>
+                            <th>Thưởng/OT</th>
+                            <th>Phạt & Thuế</th>
+                            <th>Ghi chú</th> <th>Thực lĩnh</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php if ($result->num_rows > 0): ?>
-                            <?php while($row = $result->fetch_assoc()): ?>
+                            <?php while($row = $result->fetch_assoc()): 
+                                $allowances = $row['allowance_degree'] + $row['allowance_seniority'];
+                                $extra = $row['bonus'] + $row['overtime_money'];
+                                $deductions = $row['total_fine'] + $row['tax'];
+                            ?>
                             <tr>
                                 <td class="fw-bold"><?php echo date('m/Y', strtotime($row['month'])); ?></td>
-                                <td><?php echo $row['work_days']; ?></td>
-                                <td><?php echo number_format($row['base_salary']); ?> đ</td>
-                                <td class="text-success">+<?php echo number_format($row['bonus']); ?> đ</td>
-                                <td class="text-danger">-<?php echo number_format($row['deductions']); ?> đ</td>
-                                <td class="fw-bold text-primary fs-5"><?php echo number_format($row['total_salary']); ?> đ</td>
-                                <td>
-                                    <span class="badge bg-success">Đã thanh toán</span>
+                                <td><?php echo number_format($row['base_salary']); ?></td>
+                                <td><?php echo number_format($allowances); ?></td>
+                                <td class="text-success">
+                                    +<?php echo number_format($extra); ?>
+                                    <?php if($row['overtime_hours'] > 0) echo "<br><small>({$row['overtime_hours']}h OT)</small>"; ?>
                                 </td>
+                                <td class="text-danger fw-bold">
+                                    -<?php echo number_format($deductions); ?>
+                                    <?php if($row['late_count'] > 0) echo "<br><small>(Muộn: {$row['late_count']})</small>"; ?>
+                                </td>
+                                
+                                <td class="text-start text-muted small" style="max-width: 200px;">
+                                    <?php echo nl2br($row['note'] ?? ''); ?>
+                                </td>
+
+                                <td class="fw-bold text-primary fs-5"><?php echo number_format($row['total_salary']); ?> đ</td>
                             </tr>
                             <?php endwhile; ?>
                         <?php else: ?>
