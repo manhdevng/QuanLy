@@ -17,27 +17,34 @@ $conn->set_charset("utf8");
 date_default_timezone_set('Asia/Ho_Chi_Minh');
 $conn->query("SET time_zone = '+07:00'");
 
-// Khởi động session nếu chưa có
+// Khởi động session
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
 /**
- * Hàm kiểm tra quyền hạn (Permission Check)
- * @param string $code Mã quyền cần kiểm tra (VD: 'user.create', 'salary.view')
- * @return bool True nếu có quyền, False nếu không
+ * Hàm kiểm tra quyền hạn
  */
 function hasPermission($code) {
-    // Admin (role_id = 1) luôn có tất cả quyền
     if (isset($_SESSION['role_id']) && $_SESSION['role_id'] == 1) {
         return true;
     }
-
-    // Kiểm tra trong danh sách quyền đã lưu ở Session
     if (isset($_SESSION['permissions']) && in_array($code, $_SESSION['permissions'])) {
         return true;
     }
-
     return false;
+}
+
+/**
+ * MỚI: Hàm lấy giá trị cấu hình từ DB
+ */
+function getSetting($key) {
+    global $conn;
+    $sql = "SELECT setting_value FROM settings WHERE setting_key = '$key'";
+    $result = $conn->query($sql);
+    if ($result && $result->num_rows > 0) {
+        return $result->fetch_assoc()['setting_value'];
+    }
+    return 0; // Mặc định trả về 0 nếu không tìm thấy
 }
 ?>

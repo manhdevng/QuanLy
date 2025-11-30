@@ -8,8 +8,17 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Lấy thông báo từ Admin
+$user_id = $_SESSION['user_id'];
+
+// 1. Lấy Thông báo từ Admin (Giữ nguyên)
 $notif_query = $conn->query("SELECT * FROM notifications ORDER BY created_at DESC LIMIT 3");
+
+// 2. Lấy các Yêu cầu ĐANG XỬ LÝ (Pending)
+// a. Đơn nghỉ phép
+$pending_leaves = $conn->query("SELECT * FROM leave_requests WHERE user_id = $user_id AND status = 'pending' ORDER BY created_at DESC");
+
+// b. Yêu cầu sửa hồ sơ
+$pending_profiles = $conn->query("SELECT * FROM profile_requests WHERE user_id = $user_id AND status = 'pending' ORDER BY request_date DESC");
 ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -21,6 +30,8 @@ $notif_query = $conn->query("SELECT * FROM notifications ORDER BY created_at DES
     <style>
         .card { transition: transform 0.2s; }
         .card:hover { transform: translateY(-3px); }
+        .status-card-item { transition: background 0.3s; }
+        .status-card-item:hover { background: #f8f9fa; }
     </style>
 </head>
 <body class="bg-light">
@@ -45,11 +56,11 @@ $notif_query = $conn->query("SELECT * FROM notifications ORDER BY created_at DES
                     <div class="card-body text-center">
                         <div class="mb-3">
                             <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
-                                <i class="fas fa-user text-primary" style="font-size: 50px;"></i>
+                                <img src="<?php echo $_SESSION['avatar'] ?? 'img/default.jpg'; ?>" class="rounded-circle" style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
                         </div>
                         <h4 class="card-title"><?php echo $_SESSION['full_name']; ?></h4>
-                        <span class="badge bg-info text-dark mb-3">Nhân viên chính thức</span>
+                        <span class="badge bg-info text-dark mb-3">Nhân viên</span>
                         
                         <div class="d-grid gap-2">
                             <a href="profile.php" class="btn btn-outline-primary"><i class="fas fa-user-edit me-2"></i>Cập nhật hồ sơ</a>
@@ -61,6 +72,46 @@ $notif_query = $conn->query("SELECT * FROM notifications ORDER BY created_at DES
             
             <div class="col-md-8">
                 
+                <div class="card shadow-sm mb-4 border-primary">
+                    <div class="card-header bg-primary text-white fw-bold">
+                        <i class="fas fa-tasks me-2"></i>Trạng thái Đơn & Yêu cầu
+                    </div>
+                    <div class="card-body p-0">
+                        <?php if ($pending_leaves->num_rows == 0 && $pending_profiles->num_rows == 0): ?>
+                            <div class="p-4 text-center text-muted">
+                                <i class="fas fa-check-circle fa-2x mb-2 text-success"></i><br>
+                                Không có yêu cầu nào đang chờ xử lý.
+                            </div>
+                        <?php else: ?>
+                            <ul class="list-group list-group-flush">
+                                <?php while($prof = $pending_profiles->fetch_assoc()): ?>
+                                    <li class="list-group-item status-card-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <strong class="text-dark"><i class="fas fa-id-card text-info me-2"></i>Cập nhật Hồ sơ</strong>
+                                            <br><small class="text-muted">Gửi lúc: <?php echo date('H:i d/m/Y', strtotime($prof['request_date'])); ?></small>
+                                        </div>
+                                        <span class="badge bg-warning text-dark">Chờ duyệt</span>
+                                    </li>
+                                <?php endwhile; ?>
+
+                                <?php while($leave = $pending_leaves->fetch_assoc()): ?>
+                                    <li class="list-group-item status-card-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <strong class="text-dark"><i class="fas fa-calendar-minus text-danger me-2"></i>Xin nghỉ phép</strong>
+                                            <br>
+                                            <small class="text-muted">
+                                                <?php echo date('d/m', strtotime($leave['start_date'])) . ' - ' . date('d/m', strtotime($leave['end_date'])); ?>
+                                                (Lý do: <?php echo $leave['reason']; ?>)
+                                            </small>
+                                        </div>
+                                        <span class="badge bg-warning text-dark">Chờ duyệt</span>
+                                    </li>
+                                <?php endwhile; ?>
+                            </ul>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
                 <div class="card shadow-sm mb-4">
                     <div class="card-header bg-white border-bottom fw-bold">
                         <i class="fas fa-bell me-2 text-warning"></i>Thông báo từ Ban quản trị

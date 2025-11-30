@@ -60,14 +60,15 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 </div>
 
             <div class="col-md-4">
-                <div class="card text-white bg-success h-100 shadow-sm">
-                    <div class="card-body">
-                        <h5 class="card-title"><i class="fas fa-check-circle me-2"></i>Duyệt đơn nghỉ</h5>
-                        <p class="card-text">Xem và phê duyệt các yêu cầu nghỉ phép của nhân viên.</p>
-                        <a href="admin_leaves.php" class="btn btn-light btn-sm text-success fw-bold stretched-link">Truy cập</a>
-                    </div>
-                </div>
-            </div>
+    <div class="card text-white bg-success h-100 shadow-sm position-relative overflow-hidden">
+        <div class="card-body">
+            <i class="fas fa-check-double dashboard-card-icon"></i>
+            <h5 class="card-title">Phê duyệt</h5>
+            <p class="card-text small">Duyệt đơn nghỉ & Hồ sơ.</p>
+            <a href="admin_approvals.php" class="btn btn-light btn-sm text-success fw-bold stretched-link">Truy cập</a>
+        </div>
+    </div>
+</div>
             <div class="col-md-4">
     <div class="card text-white bg-danger h-100 shadow-sm position-relative overflow-hidden">
         <div class="card-body">
@@ -85,6 +86,16 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
             <h5 class="card-title">Báo cáo Tài chính</h5>
             <p class="card-text small">Tổng hợp Lương & Chi tiêu.</p>
             <a href="admin_financial_report.php" class="btn btn-light btn-sm text-primary fw-bold stretched-link">Truy cập</a>
+        </div>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="card text-white bg-secondary h-100 shadow-sm position-relative overflow-hidden" style="background-color: #495057 !important;">
+        <div class="card-body">
+            <i class="fas fa-cogs dashboard-card-icon"></i>
+            <h5 class="card-title">Cấu hình</h5>
+            <p class="card-text small">Chỉnh sửa mức phạt, phụ cấp.</p>
+            <a href="admin_settings.php" class="btn btn-light btn-sm text-secondary fw-bold stretched-link">Truy cập</a>
         </div>
     </div>
 </div>
