@@ -2,11 +2,12 @@
 session_start();
 require_once 'db_connect.php';
 
-// Check quyền Admin (ID 1 hoặc 2)
-if (!isset($_SESSION['user_id']) || ($_SESSION['role_id'] != 1 && $_SESSION['role_id'] != 2)) {
+// Check quyền: Phải là Admin HOẶC có quyền xem/sửa nhân viên
+if (!isset($_SESSION['user_id']) || (!hasPermission('user.view') && !hasPermission('user.edit') && $_SESSION['role_id'] != 1)) {
     header("Location: index.php");
     exit();
 }
+// ... phần còn lại giữ nguyên ...
 
 $user_id = $_GET['id'] ?? 0;
 $msg = "";

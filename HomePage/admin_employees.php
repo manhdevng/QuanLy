@@ -2,11 +2,12 @@
 session_start();
 require_once 'db_connect.php';
 
-// Check quyền
-if (!isset($_SESSION['user_id']) || ($_SESSION['role_id'] != 1 && $_SESSION['role_id'] != 2)) {
+// Check quyền: Phải là Admin HOẶC có quyền xem nhân viên
+if (!isset($_SESSION['user_id']) || (!hasPermission('user.view') && $_SESSION['role_id'] != 1)) {
     header("Location: index.php");
     exit();
 }
+// ... phần còn lại giữ nguyên ...
 
 $search_query = isset($_GET['search']) ? trim($_GET['search']) : '';
 
@@ -65,7 +66,9 @@ $result = $stmt->get_result();
             
             <div class="d-flex gap-2">
                 <a href="register.php" class="btn btn-primary"><i class="fas fa-user-plus"></i> Thêm mới</a>
-                <a href="admin_dashboard.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Quay lại</a>
+               <a href="<?php echo ($_SESSION['role_id'] == 1) ? 'admin_dashboard.php' : 'user_dashboard.php'; ?>" class="btn btn-secondary">
+    <i class="fas fa-arrow-left"></i> Quay lại
+</a>
             </div>
         </div>
 

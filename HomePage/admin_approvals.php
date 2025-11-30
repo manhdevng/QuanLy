@@ -2,10 +2,12 @@
 session_start();
 require_once 'db_connect.php';
 
-if (!isset($_SESSION['user_id']) || ($_SESSION['role_id'] != 1 && $_SESSION['role_id'] != 2)) {
+// Check quyền: Phải là Admin HOẶC có quyền duyệt đơn (leave.approve hoặc approve.manage)
+if (!isset($_SESSION['user_id']) || (!hasPermission('leave.approve') && !hasPermission('approve.manage') && $_SESSION['role_id'] != 1)) {
     header("Location: index.php");
     exit();
 }
+// ... phần còn lại giữ nguyên ...
 
 // --- DUYỆT ĐƠN NGHỈ ---
 if (isset($_POST['action_leave'])) {
@@ -65,7 +67,9 @@ $profiles = $conn->query("SELECT pr.*, u.username FROM profile_requests pr JOIN 
     <div class="container mt-5 mb-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2><i class="fas fa-check-double text-success"></i> Trung tâm Phê duyệt</h2>
-            <a href="admin_dashboard.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Quay lại</a>
+            <<a href="<?php echo ($_SESSION['role_id'] == 1) ? 'admin_dashboard.php' : 'user_dashboard.php'; ?>" class="btn btn-secondary">
+    <i class="fas fa-arrow-left"></i> Quay lại
+</a>
         </div>
 
         <div class="card shadow-sm">

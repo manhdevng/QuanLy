@@ -2,11 +2,12 @@
 session_start();
 require_once 'db_connect.php';
 
-// Check quyền (Admin hoặc Manager)
-if (!isset($_SESSION['user_id']) || ($_SESSION['role_id'] != 1 && $_SESSION['role_id'] != 2)) {
+// Check quyền: Phải là Admin HOẶC có quyền quản lý chi tiêu
+if (!isset($_SESSION['user_id']) || (!hasPermission('expense.manage') && $_SESSION['role_id'] != 1)) {
     header("Location: index.php");
     exit();
 }
+// ... phần còn lại giữ nguyên ...
 
 $message = "";
 
@@ -73,7 +74,9 @@ $total_expense = 0;
     <div class="container mt-5 mb-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2><i class="fas fa-file-invoice-dollar text-danger"></i> Quản lý Chi tiêu Nội bộ</h2>
-            <a href="admin_dashboard.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Quay lại</a>
+            <a href="<?php echo ($_SESSION['role_id'] == 1) ? 'admin_dashboard.php' : 'user_dashboard.php'; ?>" class="btn btn-secondary">
+    <i class="fas fa-arrow-left"></i> Quay lại
+</a>
         </div>
 
         <?php echo $message; ?>

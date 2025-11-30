@@ -2,8 +2,8 @@
 session_start();
 require_once 'db_connect.php';
 
-// Check quyền
-if (!isset($_SESSION['user_id']) || ($_SESSION['role_id'] != 1 && $_SESSION['role_id'] != 2)) {
+// Check quyền: Phải là Admin HOẶC có quyền quản lý lương
+if (!isset($_SESSION['user_id']) || (!hasPermission('salary.manage') && $_SESSION['role_id'] != 1)) {
     header("Location: index.php");
     exit();
 }
@@ -119,7 +119,9 @@ $users = $conn->query($sql_users);
     <div class="container-fluid mt-4 mb-5">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h3><i class="fas fa-calculator text-success"></i> Bảng Lương (Full Auto)</h3>
-            <a href="admin_dashboard.php" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Quay lại</a>
+            <a href="<?php echo ($_SESSION['role_id'] == 1) ? 'admin_dashboard.php' : 'user_dashboard.php'; ?>" class="btn btn-secondary">
+    <i class="fas fa-arrow-left"></i> Quay lại
+</a>
         </div>
 
         <?php echo $message; ?>
