@@ -114,22 +114,24 @@ body {
 }
 
 .hero h1 {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-weight: 700;
-  line-height: 1.2;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Tăng shadow để nổi bật hơn */
+  font-weight: 900; /* Bold hơn */
+  line-height: 1.1;
   margin-bottom: 1.5rem;
+  font-size: 3.5rem; /* Tăng size cho nổi */
 }
 
 .hero p {
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Tăng shadow */
   max-width: 800px;
   margin: 0 auto 2rem;
-  font-size: 1.25rem;
+  font-size: 1.4rem; /* Tăng size */
+  font-weight: 600; /* Bold hơn */
 }
 
 .hero .btn {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.2rem; /* Tăng size button */
+  font-weight: 700; /* Bold hơn */
   box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3);
   transition: all 0.3s ease;
 }
@@ -190,15 +192,17 @@ body {
 }
 
 .mv-card h4 {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.5rem; /* Tăng size */
+  font-weight: 800; /* Bold hơn */
   margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Thêm shadow */
   flex-shrink: 0;
 }
 
 .mv-card p {
   flex-grow: 1; /* ✅ Cho text mở rộng hết không gian */
   line-height: 1.6;
+  font-weight: 500; /* Tăng weight */
 }
 
 /* ----------------------------------- */
@@ -223,16 +227,18 @@ body {
 }
 
 .timeline-item h5 {
-  font-size: 2rem; /* ✅ Tăng size năm */
-  font-weight: 700;
+  font-size: 2.5rem; /* Tăng size năm */
+  font-weight: 900; /* Bold hơn */
   color: var(--blue);
   margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Thêm shadow */
 }
 
 .timeline-item p {
-  font-size: 0.95rem;
+  font-size: 1rem; /* Tăng size */
   color: #555;
   line-height: 1.5;
+  font-weight: 500; /* Bold hơn */
 }
 
 /* ✅ Đường kẻ ngang giữa các mốc */
@@ -286,19 +292,21 @@ body {
 }
 
 .dept-card h5 {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.3rem; /* Tăng size */
+  font-weight: 800; /* Bold hơn */
   margin-bottom: 0.75rem;
   color: var(--blue);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Thêm shadow */
   flex-shrink: 0;
 }
 
 .dept-card p {
   flex-grow: 1; /* Cho text mở rộng */
-  font-size: 0.95rem;
+  font-size: 1rem; /* Tăng size */
   color: #666;
   line-height: 1.5;
   margin-bottom: 1rem;
+  font-weight: 500; /* Bold hơn */
 }
 
 .dept-card .btn {
@@ -353,12 +361,16 @@ body {
   color: white;
   position: relative;
   z-index: 1;
+  font-size: 2.8rem; /* Tăng size */
+  font-weight: 900; /* Bold hơn */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Thêm shadow */
 }
 
 .achievements p {
   color: rgba(255, 255, 255, 0.9);
   position: relative;
   z-index: 1;
+  font-weight: 600; /* Bold hơn */
 }
 
 .achievements-grid {
@@ -394,11 +406,12 @@ body {
 }
 
 .achievement-box .number {
-  font-size: 3rem;
-  font-weight: 800;
+  font-size: 3.5rem; /* Tăng size số */
+  font-weight: 900; /* Bold hơn */
   margin-bottom: 10px;
   line-height: 1;
   color: var(--blue); /* ✅ Số màu xanh */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Thêm shadow */
 }
 
 .achievement-box:hover .number {
@@ -406,18 +419,21 @@ body {
 }
 
 .achievement-box .description {
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 1.1rem; /* Tăng size */
+  font-weight: 600; /* Bold hơn */
   line-height: 1.4;
   text-align: center;
   color: #555;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.1); /* Thêm shadow nhẹ */
 }
 
 /* ✅ PHẦN HỌC VIÊN ĐẠT KẾT QUẢ CAO - SỬA LỆCH BẰNG CÁCH STRETCH VÀ FIX HEIGHT */
 .top-students-section h3 {
   color: white;
-  font-size: 1.8rem;
+  font-size: 2.5rem; /* Tăng size */
   margin-bottom: 2rem;
+  font-weight: 900; /* Bold hơn */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Thêm shadow */
 }
 
 .students-grid {
@@ -453,20 +469,26 @@ body {
 .student-card h6 {
   margin: 1rem 0 0.5rem;
   color: var(--blue);
-  font-weight: 600;
+  font-weight: 700; /* Bold hơn */
+  font-size: 1.5rem; /* Tăng size tên */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Thêm shadow */
   flex-shrink: 0; /* Không co tên */
 }
 
 .text-orange {
   color: var(--orange) !important;
+  font-size: 2.5rem; /* Tăng size điểm */
+  font-weight: 900; /* Bold hơn */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Thêm shadow */
   flex-shrink: 0; /* Không co điểm số */
 }
 
 .student-card p {
   color: #666;
-  font-size: 0.9rem;
+  font-size: 1rem; /* Tăng size */
   line-height: 1.4;
   margin: 0;
+  font-weight: 500; /* Bold hơn */
   flex-grow: 1; /* ✅ SỬA LỆCH: Text stretch để lấp đầy không gian, tránh lệch */
   display: -webkit-box;
   -webkit-line-clamp: 3; /* Giới hạn 3 dòng để tránh text dài làm lệch */
@@ -543,8 +565,8 @@ body {
 }
 
 .news-title {
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: 1.3rem; /* Tăng size */
+  font-weight: 800; /* Bold hơn */
   margin-bottom: 0.5rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -553,6 +575,7 @@ body {
   overflow: hidden;
   flex-shrink: 0;
   color: #333;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.1); /* Thêm shadow */
 }
 
 .news-desc {
@@ -564,7 +587,8 @@ body {
   overflow: hidden;
   margin-bottom: 1rem;
   color: #666;
-  font-size: 0.95rem;
+  font-size: 1rem; /* Tăng size */
+  font-weight: 500; /* Bold hơn */
 }
 
 .news-btn {
@@ -881,11 +905,11 @@ body {
   }
 
   .hero h1 {
-    font-size: 2rem;
+    font-size: 2.5rem; /* Giảm nhưng vẫn nổi */
   }
 
   .hero p {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   /* ✅ Timeline chuyển dọc trên mobile */
@@ -973,7 +997,7 @@ body {
     grid-template-columns: 1fr;
   }
   .achievement-box .number {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
   }
 
   .contact-info {
@@ -985,10 +1009,74 @@ body {
   }
 
   .hero h1 {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   .hero p {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
   }
+}
+/* news */
+.news-grid-full { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 20px; 
+  align-items: stretch; /* ✅ SỬA LỆCH: Làm card cao bằng nhau */
+}
+.news-card-full { 
+  border: 1px solid #ddd; 
+  border-radius: 10px; 
+  overflow: hidden; 
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+  display: flex; /* ✅ SỬA LỆCH: Flex để nội dung stretch đều */
+  flex-direction: column;
+  height: 100%; /* ✅ SỬA LỆCH: Đảm bảo cao bằng nhau */
+}
+.news-card-full img {
+  width: 100%;
+  height: 250px; /* ✅ Cố định chiều cao ảnh để tránh lệch */
+  object-fit: cover; /* ✅ Crop ảnh đẹp, không méo */
+  flex-shrink: 0; /* Không co ảnh */
+}
+.news-card-full .news-content-full {
+  flex-grow: 1; /* ✅ SỬA LỆCH: Nội dung text stretch để lấp đầy */
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  justify-content: space-between; /* Phân bố đều text và button */
+}
+.news-card-full .news-desc-full {
+  flex-grow: 1; /* Text mở rộng */
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Giới hạn dòng để tránh text dài làm lệch */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  font-size: 1.1em; /* Tăng size */
+  font-weight: 500; /* Bold hơn */
+  line-height: 1.6;
+}
+.news-card-full .btn {
+  margin-top: auto; /* Đẩy button xuống dưới */
+  flex-shrink: 0;
+}
+.news-hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/news-bg.jpg'); } /* Thêm ảnh bg nếu có */
+.news-desc-full { font-size: 1.1em; line-height: 1.6; }
+
+/* detail page */
+
+/* Thêm styles chung để chữ nổi bật hơn trên toàn trang */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800; /* Bold hơn mặc định */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* Shadow nhẹ cho tất cả heading */
+}
+
+p {
+  font-weight: 500; /* Tăng weight cho đoạn văn */
+}
+
+.navbar-brand {
+  font-size: 1.5rem; /* Tăng size logo */
+  font-weight: 900;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }

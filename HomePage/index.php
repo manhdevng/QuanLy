@@ -1,5 +1,5 @@
 <?php
-require_once 'db_connect.php'; // Kết nối database để lấy tin tức
+// Không cần require db_connect.php nữa vì hard-code
 ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -60,18 +60,18 @@ require_once 'db_connect.php'; // Kết nối database để lấy tin tức
 
     <section class="mission-vision" id="mission">
         <div class="container position-relative">
-            <h2 class="text-center mb-5">Khám phá những nguyên tắc cốt lõi của chúng tôi</h2>
+            <h2 class="text-center mb-5">KHÁM PHÁ NHỮNG NGUYÊN TẮC CỐT LÕI CỦA CHÚNG TÔI</h2>
             <div class="row">
                 <div class="col-md-6">
                     <div class="mv-card scroll-animate">
-                        <img src="img/giangvien.jpg" alt="Focused consultant at desk discussing strategies" class="img-fluid mb-3 rounded">
+                        <img src="img/giangvien.jpg" alt="Focused consultant at desk discussing strategies" class="img-fluid mb-3 rounded" onerror="this.src='https://via.placeholder.com/300x200?text=Giảng+Viên';">
                         <h4>Phương pháp giảng dạy độc quyền</h4>
                         <p>Chúng tôi tự hào mang đến phương pháp giảng dạy IELTS được nghiên cứu và phát triển bởi đội ngũ giáo viên có điểm số IELTS 8.0+ với nhiều năm kinh nghiệm.</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="mv-card scroll-animate">
-                        <img src="img/achi.jpg" alt="Team brainstorming innovative solutions in a meeting" class="img-fluid mb-3 rounded">
+                        <img src="img/achi.jpg" alt="Team brainstorming innovative solutions in a meeting" class="img-fluid mb-3 rounded" onerror="this.src='https://via.placeholder.com/300x200?text=Thành+Tựu';">
                         <h4>Cam kết đầu ra rõ ràng</h4>
                         <p>IELTS School cam kết đồng hành cùng học viên đến khi đạt mục tiêu, với chính sách rõ ràng và minh bạch.</p>
                     </div>
@@ -82,7 +82,7 @@ require_once 'db_connect.php'; // Kết nối database để lấy tin tức
     </section>
 
     <section id="about" class="container py-5 fade-in">
-    <h2 class="text-center mb-5">Chúng tôi là ai</h2>
+    <h2 class="text-center mb-5">CHÚNG TÔI LÀ AI ?</h2>
     <p class="lead text-center mb-5">IELTS school - Nơi cung cấp các khóa học IELTS chất lượng cao với đội ngũ giảng viên giàu kinh nghiệm và phương pháp giảng dạy hiện đại.</p>
     
     <div class="timeline">
@@ -103,41 +103,41 @@ require_once 'db_connect.php'; // Kết nối database để lấy tin tức
 
     <section id="stats" class="achievements fade-in">
     <div class="container">
-        <h2 class="text-center mb-5">Thành tựu nổi bật</h2>
+        <h2 class="text-center mb-5">THÀNH TỰU NỔI BẬT</h2>
         <div class="achievements-grid scroll-animate">
             <div class="achievement-box">
-                <div class="number">0</div>
+                <div class="number" data-target="5000">0</div>
                 <div class="description">Học viên đã đạt mục tiêu</div>
             </div>
             <div class="achievement-box">
-                <div class="number">0</div>
+                <div class="number" data-target="95">0</div>
                 <div class="description">Tỷ lệ đạt điểm cam kết</div>
             </div>
             <div class="achievement-box">
-                <div class="number">0</div>
+                <div class="number" data-target="7.2">0</div>
                 <div class="description">Là điểm IELTS trung bình</div>
             </div>
             <div class="achievement-box">
-                <div class="number">0</div>
+                <div class="number" data-target="50">0</div>
                 <div class="description">Giáo viên đạt 7.5+ IELTS</div>
             </div>
             <div class="achievement-box">
-                <div class="number">0</div>
+                <div class="number" data-target="10">0</div>
                 <div class="description">Năm kinh nghiệm đào tạo</div>
             </div>
         </div>
         <!-- ✅ PHẦN HỌC VIÊN ĐẠT KẾT QUẢ CAO - 4 HỌC VIÊN, MỖI SLIDE 1 NGƯỜI (ẢNH TRÁI, TEXT PHẢI) -->
         <div class="top-students-section scroll-animate mt-5">
-            <h3 class="text-center mb-4 text-white">Học viên đạt kết quả cao</h3>
+            <h3 class="text-center mb-4 text-white">HỌC VIÊN ĐẠT KẾT QUẢ CAO</h3>
             <div id="topStudentsCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <?php
                     // Chỉ 4 học viên demo
                     $top_students = [
-                        ['name' => 'Hà Văn Dũng', 'image' => 'img/students/student1.jpg', 'score' => '8.0', 'testimonial' => 'Cảm ơn IELTS School đã giúp tôi đạt band 8.0 chỉ trong 3 tháng! Phương pháp học hiệu quả và giáo viên tận tâm.'],
-                        ['name' => 'Nguyễn Tiến Đạt', 'image' => 'img/students/student2.jpg', 'score' => '7.5', 'testimonial' => 'Phương pháp học thú vị, giáo viên tận tâm. Điểm Listening lên 9.0! Tôi rất hài lòng với lộ trình cá nhân hóa.'],
-                        ['name' => 'Nguyễn Minh Quân', 'image' => 'img/students/student3.jpg', 'score' => '7.0', 'testimonial' => 'Từ 5.0 lên 7.0, nhờ lộ trình cá nhân hóa. Trung tâm đã đồng hành sát sao, giúp tôi tự tin hơn trong kỳ thi.'],
-                        ['name' => 'Nguyễn Ngọc Mạnh', 'image' => 'img/students/student4.jpg', 'score' => '8.5', 'testimonial' => 'Tuyệt vời! Đã chinh phục Writing band 8.5. Cảm ơn đội ngũ giảng viên đã truyền cảm hứng học tập cho tôi.']
+                        ['name' => 'Hà Văn Dũng', 'image' => 'img/dung.jpg', 'score' => '8.0', 'testimonial' => 'Cảm ơn IELTS School đã giúp tôi đạt band 8.0 chỉ trong 3 tháng! Phương pháp học hiệu quả và giáo viên tận tâm.'],
+                        ['name' => 'Nguyễn Tiến Đạt', 'image' => 'img/dat.jpg', 'score' => '7.5', 'testimonial' => 'Phương pháp học thú vị, giáo viên tận tâm. Điểm Listening lên 9.0! Tôi rất hài lòng với lộ trình cá nhân hóa.'],
+                        ['name' => 'Nguyễn Minh Quân', 'image' => 'img/quan.jpg', 'score' => '7.0', 'testimonial' => 'Từ 5.0 lên 7.0, nhờ lộ trình cá nhân hóa. Trung tâm đã đồng hành sát sao, giúp tôi tự tin hơn trong kỳ thi.'],
+                        ['name' => 'Nguyễn Ngọc Mạnh', 'image' => 'img/manh.jpg', 'score' => '8.5', 'testimonial' => 'Tuyệt vời! Đã chinh phục Writing band 8.5. Cảm ơn đội ngũ giảng viên đã truyền cảm hứng học tập cho tôi.']
                     ];
                     $isActive = true;
                     foreach($top_students as $student): ?>
@@ -145,7 +145,7 @@ require_once 'db_connect.php'; // Kết nối database để lấy tin tức
                         <div class="container">
                             <div class="row align-items-center student-slide">
                                 <div class="col-md-6 text-center mb-3 mb-md-0">
-                                    <img src="<?php echo $student['image']; ?>" alt="<?php echo $student['name']; ?>" class="img-fluid rounded-circle student-image">
+                                    <img src="<?php echo $student['image']; ?>" alt="<?php echo $student['name']; ?>" class="img-fluid rounded-circle student-image" onerror="this.src='https://via.placeholder.com/200?text=<?php echo urlencode($student['name']); ?>';">
                                 </div>
                                 <div class="col-md-6">
                                     <h5 class="mb-3"><?php echo $student['name']; ?></h5>
@@ -171,118 +171,132 @@ require_once 'db_connect.php'; // Kết nối database để lấy tin tức
 </section>
 
     <section id="departments" class="container py-5 fade-in">
-    <h2 class="text-center mb-5">Các phòng ban chuyên môn</h2>
+    <h2 class="text-center mb-5">CÁC PHÒNG BAN CHUYÊN MÔN</h2>
     
-    <?php
-    // Lấy danh sách phòng ban từ DB
-    $dept_query = $conn->query("SELECT * FROM departments");
-    $all_departments = [];
-    while($dept = $dept_query->fetch_assoc()) {
-        $all_departments[] = $dept;
-    }
-    $total_depts = count($all_departments);
-    ?>
-
+    <!-- Hard-code 4 phòng ban đầu tiên với link chi tiết -->
     <div class="dept-grid">
-        <?php 
-        // ✅ CHỈ HIỂN THỊ 4 PHÒNG BAN ĐẦU TIÊN
-        for($i = 0; $i < min(4, $total_depts); $i++): 
-            $dept = $all_departments[$i];
-        ?>
+        <!-- Card 1: Marketing -->
         <div class="dept-card scroll-animate">
-            <img src="<?php echo $dept['image']; ?>" alt="<?php echo $dept['name']; ?>" class="img-fluid mb-3 rounded">
-            <h5><?php echo $dept['name']; ?></h5>
-            <p><?php echo $dept['description']; ?></p>
-            <a href="#" class="btn btn-orange btn-sm">Xem chi tiết</a>
+            <img src="img/Strategy.jpg" alt="Phòng Marketing" class="img-fluid mb-3 rounded" onerror="this.src='https://via.placeholder.com/300x200?text=Marketing';">
+            <h5>Phòng Marketing</h5>
+            <p>Quảng bá thông tin và Tuyển sinh online.</p>
+            <a href="departments/marketing.php?id=1" class="btn btn-orange btn-sm">Xem chi tiết</a>
         </div>
-        <?php endfor; ?>
+
+        <!-- Card 2: Hành chính -->
+        <div class="dept-card scroll-animate">
+            <img src="img/Finance.jpg" alt="Hành Chính - Kế Toán" class="img-fluid mb-3 rounded" onerror="this.src='https://via.placeholder.com/300x200?text=Hành+Chính';">
+            <h5>Hành Chính - Kế Toán</h5>
+            <p>Quản lý nhân sự, Thực chi và Cơ sở.</p>
+            <a href="departments/hanhchinh.php?id=2" class="btn btn-orange btn-sm">Xem chi tiết</a>
+        </div>
+
+        <!-- Card 3: Đào Tạo -->
+        <div class="dept-card scroll-animate">
+            <img src="img/vision1.jpg" alt="Phòng Đào Tạo" class="img-fluid mb-3 rounded" onerror="this.src='https://via.placeholder.com/300x200?text=Đào+Tạo';">
+            <h5>Phòng Đào Tạo</h5>
+            <p>Quản lý học viên và Chất lượng.</p>
+            <a href="departments/daotao.php?id=3" class="btn btn-orange btn-sm">Xem chi tiết</a>
+        </div>
+
+        <!-- Card 4: Tuyển Sinh -->
+        <div class="dept-card scroll-animate">
+            <img src="img/Operations.jpg" alt="Phòng Tuyển Sinh" class="img-fluid mb-3 rounded" onerror="this.src='https://via.placeholder.com/300x200?text=Tuyển+Sinnh';">
+            <h5>Phòng Tuyển Sinh</h5>
+            <p>Tư vấn khóa học và Telesales.</p>
+            <a href="departments/tuyensinh.php?id=4" class="btn btn-orange btn-sm">Xem chi tiết</a>
+        </div>
     </div>
 
-    <?php if($total_depts > 4): ?>
-    <!-- ✅ NÚT XEM THÊM (nếu có hơn 4 phòng ban) -->
+    <!-- Nút xem tất cả (hard-code số 5 nếu có phòng 5) -->
     <div class="text-center mt-4">
-        <button class="btn btn-orange" data-bs-toggle="modal" data-bs-target="#allDepartmentsModal">
-            Xem tất cả phòng ban (<?php echo $total_depts; ?>)
-        </button>
+        <a href="departments/full_departments.php" class="btn btn-orange">Xem tất cả phòng ban (5)</a>
     </div>
-    <?php endif; ?>
 </section>
 
-<!-- ✅ MODAL HIỂN THỊ TẤT CẢ PHÒNG BAN -->
-<div class="modal fade" id="allDepartmentsModal" tabindex="-1">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Tất cả các phòng ban chuyên môn</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <div class="dept-grid">
-                    <?php foreach($all_departments as $dept): ?>
-                    <div class="dept-card">
-                        <img src="<?php echo $dept['image']; ?>" alt="<?php echo $dept['name']; ?>" class="img-fluid mb-3 rounded">
-                        <h5><?php echo $dept['name']; ?></h5>
-                        <p><?php echo $dept['description']; ?></p>
-                        <a href="#" class="btn btn-orange btn-sm">Xem chi tiết</a>
-                    </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-    
+<!-- Modal hiển thị tất cả phòng ban (hard-code nếu cần, hoặc link ra trang riêng) -->
+<!-- Ở đây giữ modal đơn giản, nhưng vì hard-code, bạn có thể thay bằng link ra full_departments.php nếu muốn -->
+
     <section class="sponsors-section fade-in">
         <div class="container py-4">
             <div class="sponsors-container">
                 <div class="sponsors-marquee">
-                    <div class="sponsor-logo"><img src="imgtaitro/VnEconomy.svg" alt="VnEconomy"></div>
-                    <div class="sponsor-logo"><img src="imgtaitro/Vnexpress.svg" alt="VnExpress"></div>
-                    <div class="sponsor-logo"><img src="imgtaitro/Cafebiz.svg" alt="Giáo Dục"></div>
-                    <div class="sponsor-logo"><img src="imgtaitro/apple.jpg" alt="apple"></div>
-                    <div class="sponsor-logo"><img src="imgtaitro/nvidia.jpg" alt="nvidia"></div>
-                    <div class="sponsor-logo"><img src="imgtaitro/samsung.jpg" alt="samsung"></div>
-                    <div class="sponsor-logo"><img src="imgtaitro/VnEconomy.svg" alt="VnEconomy"></div>
-                    <div class="sponsor-logo"><img src="imgtaitro/Vnexpress.svg" alt="VnExpress"></div>
-                    <div class="sponsor-logo"><img src="imgtaitro/Cafebiz.svg" alt="Giáo Dục"></div>
-                    <div class="sponsor-logo"><img src="imgtaitro/apple.jpg" alt="apple"></div>
-                    <div class="sponsor-logo"><img src="imgtaitro/nvidia.jpg" alt="nvidia"></div>
-                    <div class="sponsor-logo"><img src="imgtaitro/samsung.jpg" alt="samsung"></div>
+                    <div class="sponsor-logo"><img src="imgtaitro/VnEconomy.svg" alt="VnEconomy" onerror="this.src='https://via.placeholder.com/150x50?text=VnEconomy';"></div>
+                    <div class="sponsor-logo"><img src="imgtaitro/Vnexpress.svg" alt="VnExpress" onerror="this.src='https://via.placeholder.com/150x50?text=VnExpress';"></div>
+                    <div class="sponsor-logo"><img src="imgtaitro/Cafebiz.svg" alt="Giáo Dục" onerror="this.src='https://via.placeholder.com/150x50?text=Cafebiz';"></div>
+                    <div class="sponsor-logo"><img src="imgtaitro/apple.jpg" alt="apple" onerror="this.src='https://via.placeholder.com/150x50?text=Apple';"></div>
+                    <div class="sponsor-logo"><img src="imgtaitro/nvidia.jpg" alt="nvidia" onerror="this.src='https://via.placeholder.com/150x50?text=NVIDIA';"></div>
+                    <div class="sponsor-logo"><img src="imgtaitro/samsung.jpg" alt="samsung" onerror="this.src='https://via.placeholder.com/150x50?text=Samsung';"></div>
+                    <div class="sponsor-logo"><img src="imgtaitro/VnEconomy.svg" alt="VnEconomy" onerror="this.src='https://via.placeholder.com/150x50?text=VnEconomy';"></div>
+                    <div class="sponsor-logo"><img src="imgtaitro/Vnexpress.svg" alt="VnExpress" onerror="this.src='https://via.placeholder.com/150x50?text=VnExpress';"></div>
+                    <div class="sponsor-logo"><img src="imgtaitro/Cafebiz.svg" alt="Giáo Dục" onerror="this.src='https://via.placeholder.com/150x50?text=Cafebiz';"></div>
+                    <div class="sponsor-logo"><img src="imgtaitro/apple.jpg" alt="apple" onerror="this.src='https://via.placeholder.com/150x50?text=Apple';"></div>
+                    <div class="sponsor-logo"><img src="imgtaitro/nvidia.jpg" alt="nvidia" onerror="this.src='https://via.placeholder.com/150x50?text=NVIDIA';"></div>
+                    <div class="sponsor-logo"><img src="imgtaitro/samsung.jpg" alt="samsung" onerror="this.src='https://via.placeholder.com/150x50?text=Samsung';"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="news" class="container py-5 fade-in">
-        <h2 class="text-center mb-5">Bản tin & Thông tin chi tiết hàng tuần</h2>
+        <h2 class="text-center mb-5">BẢN TIN & THÔNG TIN CHI TIẾT HÀNG TUẦN</h2>
         
         <?php
-        // Lấy tất cả tin tức mới nhất
-        $news_query = $conn->query("SELECT * FROM news ORDER BY created_at DESC");
-        $news_items = [];
-        while($row = $news_query->fetch_assoc()) {
-            $news_items[] = $row;
-        }
-        // Chia tin tức thành từng nhóm 3 tin (để slide carousel)
-        $news_chunks = array_chunk($news_items, 3);
+        // Hard-code 6 tin tức mẫu (chia thành chunks 3 cho carousel, ngày cập nhật theo 01/12/2025)
+        $news_items = [
+            [
+                'title' => 'Khai giảng khóa mới K15',
+                'date' => '01 Dec, 2025',
+                'summary' => 'Chào đón học viên K15. Khởi đầu hành trình chinh phục IELTS với phương pháp hiện đại.',
+                'image' => 'img/khaigiang.jpg' // Placeholder, thay bằng ảnh thật
+            ],
+            [
+                'title' => 'Hội thảo giảng dạy 4.0',
+                'date' => '30 Nov, 2025',
+                'summary' => 'Áp dụng AI vào học tập. Cập nhật xu hướng mới nhất cho giáo viên và học viên.',
+                'image' => 'img/hoithao.jpg'
+            ],
+            [
+                'title' => 'Học viên đạt band 8.0',
+                'date' => '25 Nov, 2025',
+                'summary' => 'Câu chuyện thành công từ khóa học Speaking. Chia sẻ kinh nghiệm từ top học viên.',
+                'image' => 'img/datband.jpg'
+            ],
+            [
+                'title' => 'Sự kiện tuyển sinh online',
+                'date' => '20 Nov, 2025',
+                'summary' => 'Giảm 20% học phí cho đăng ký sớm. Đăng ký ngay để nhận tư vấn miễn phí.',
+                'image' => 'img/tuyensinh.jpg'
+            ],
+            [
+                'title' => 'Workshop Writing IELTS',
+                'date' => '15 Nov, 2025',
+                'summary' => 'Hướng dẫn viết Task 2 hiệu quả. Tham gia miễn phí với chuyên gia band 8.5.',
+                'image' => 'img/workshop.jpg'
+            ],
+            [
+                'title' => 'Cập nhật chương trình học',
+                'date' => '10 Nov, 2025',
+                'summary' => 'Tích hợp module Listening mới dựa trên đề thi thật 2025.',
+                'image' => 'img/chuongtrinh.jpg'
+            ]
+        ];
+        $news_chunks = array_chunk($news_items, 3); // Chia 3 tin/slide
         ?>
 
         <div id="newsCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <?php 
-                $isActive = true;
-                foreach($news_chunks as $chunk): 
-                ?>
+                <?php $isActive = true; foreach($news_chunks as $chunk): ?>
                 <div class="carousel-item <?php echo $isActive ? 'active' : ''; $isActive = false; ?>">
                     <div class="news-grid">
                         <?php foreach($chunk as $news): ?>
                         <div class="news-card scroll-animate news-compact">
-                            <img src="<?php echo $news['image']; ?>" alt="<?php echo $news['title']; ?>" class="img-fluid">
+                            <img src="<?php echo $news['image']; ?>" alt="<?php echo $news['title']; ?>" class="img-fluid" onerror="this.src='https://via.placeholder.com/300x200?text=<?php echo urlencode($news['title']); ?>';">
                             <div class="p-3 news-content">
                                 <h5 class="news-title"><?php echo $news['title']; ?></h5>
-                                <p class="small text-muted mb-1"><?php echo date('d M, Y', strtotime($news['created_at'])); ?></p>
+                                <p class="small text-muted mb-1"><?php echo $news['date']; ?></p>
                                 <p class="small news-desc"><?php echo $news['summary']; ?></p>
-                                <a href="#" class="btn btn-orange btn-sm news-btn">Đọc thêm</a>
+                                <a href="news/news<?php echo array_search($news, $news_items) + 1; ?>.php" class="btn btn-orange btn-sm news-btn">Đọc thêm</a>
                             </div>
                         </div>
                         <?php endforeach; ?>
@@ -300,96 +314,126 @@ require_once 'db_connect.php'; // Kết nối database để lấy tin tức
                 <span class="visually-hidden">Sau</span>
             </button>
         </div>
-        <div class="text-center mt-4"><a href="#" class="read-more-btn">Xem tất cả tin tức</a></div>
+        <div class="text-center mt-4"><a href="news/full_news.php" class="read-more-btn">Xem tất cả tin tức</a></div>
     </section>
 
     <section class="cta-banner fade-in">
         <div class="container"></div>
     </section>
 
-    <footer class="contact-footer">
-        <div class="container py-5">
-            <div class="row align-items-center">
-                <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
-                    <h5 class="footer-title mb-3">Thông Tin Liên Hệ</h5>
-                    <div class="contact-info">
-                        <p class="contact-item"><i class="fas fa-map-marker-alt icon-orange me-2"></i>Địa chỉ: Công ty trách nhiệm hữu hạn 4 thành viên ddmq</p>
-                        <p class="contact-item"><i class="fas fa-phone icon-orange me-2"></i>Điện thoại: +84 8627516189</p>
-                        <p class="contact-item"><i class="fas fa-envelope icon-orange me-2"></i>Email: ddmq@gmail.com</p>
-                        <p class="contact-item"><i class="fas fa-clock icon-orange me-2"></i>Giờ làm việc: Thứ 2 - Thứ 6, 9:00 - 18:00</p>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <h5 class="footer-title mb-3">Kết Nối Với Chúng Tôi</h5>
-                    <div class="social-icons">
-                        <a href="#home" class="icon-btn" title="Trang chủ"><i class="fas fa-home me-2"></i> Trang chủ</a>
-                        <a href="#about" class="icon-btn" title="Về chúng tôi"><i class="fas fa-info-circle me-2"></i> Về chúng tôi</a>
-                        <a href="https://youtube.com" class="icon-btn" target="_blank" title="YouTube"><i class="fab fa-youtube me-2"></i> YouTube</a>
-                        <a href="https://facebook.com" class="icon-btn" target="_blank" title="Fanpage"><i class="fab fa-facebook me-2"></i> Fanpage</a>
-                        <a href="#" class="icon-btn" title="Đăng nhập"><i class="fas fa-sign-in-alt me-2"></i> Đăng nhập</a>
+    <!-- Footer redesigned (giống IELTS Mentor: Multi-column, social icons, course list, contact) -->
+<footer class="footer-mentor bg-dark text-light py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Logo and Follow Us -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="logo-section">
+                    <img src="images/logo-ielts-school.png" alt="IELTS School" class="mb-3" style="max-width: 150px;" onerror="this.src='https://via.placeholder.com/150x50?text=IELTS+School';"> <!-- Thay bằng logo thật -->
+                    <h5 class="fw-bold mb-3">IELTS School</h5>
+                    <p class="small mb-3">Trường Anh ngữ chất lượng cao với đội ngũ giảng viên giàu kinh nghiệm và phương pháp giảng dạy hiện đại.</p>
+                    <!-- Follow Us Icons -->
+                    <div class="social-icons d-flex gap-2">
+                        <a href="https://facebook.com" class="text-white p-2 bg-primary rounded-circle"><i class="fab fa-facebook-f fs-5"></i></a>
+                        <a href="https://youtube.com" class="text-white p-2 bg-danger rounded-circle"><i class="fab fa-youtube fs-5"></i></a>
+                        <a href="https://instagram.com" class="text-white p-2 bg-gradient rounded-circle" style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);"><i class="fab fa-instagram fs-5"></i></a>
+                        <a href="https://tiktok.com" class="text-white p-2 bg-black rounded-circle"><i class="fab fa-tiktok fs-5"></i></a>
+                        <a href="https://zalo.me" class="text-white p-2 bg-green rounded-circle"><i class="fab fa-whatsapp fs-5"></i></a> <!-- Icon Zalo tương tự WhatsApp -->
                     </div>
                 </div>
             </div>
-            <hr class="divider mt-4 mb-4">
-            <div class="text-center copyright"><p class="mb-0">&copy; 2025 ddmq. All Rights Reserved.</p></div>
-        </div>
-    </footer>
 
-    <div class="modal fade" id="loginModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Đăng Nhập</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="login_process.php" method="POST">
-                        <div class="mb-3">
-                            <input type="text" name="username" class="form-control" placeholder="Tên đăng nhập" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="password" name="password" class="form-control" placeholder="Mật khẩu" required>
-                        </div>
-                        <button type="submit" class="btn btn-orange w-100">Đăng Nhập</button>
-                        
-                        <div class="text-center mt-3">
-                            <span class="small text-muted">Chưa có tài khoản?</span>
-                            <a href="register.php" class="small fw-bold text-decoration-none">Đăng ký ngay</a>
-                        </div>
-                    </form>
+            <!-- Column 1: Danh sách khóa học -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="fw-bold mb-3">Danh sách khóa học</h5>
+                <ul class="list-unstyled small">
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none">Khóa Basic</a></li>
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none">Khóa Tiếng cao cấp</a></li>
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none">Pre IELTS</a></li>
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none">IELTS 3.5-4.5</a></li>
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none">IELTS 4.5-5.5</a></li>
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none">IELTS 5.5-6.5+</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 2: Catalog -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="fw-bold mb-3">Catalog</h5>
+                <ul class="list-unstyled small">
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none">Catalogue khóa học</a></li>
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none">Giáo viên</a></li>
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none">Cơ sở vật chất</a></li>
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none">Chính sách học phí</a></li>
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none">Học bổng</a></li>
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none">Đăng ký</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Blog for Mentee -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="fw-bold mb-3">Blog </h5>
+                <ul class="list-unstyled small">
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none">Sử dụng app học viên</a></li>
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none">Blog</a></li>
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none">Chia sẻ kinh nghiệm</a></li>
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none">Tips ôn IELTS</a></li>
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none">Câu chuyện thành công</a></li>
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none">Hỏi đáp</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Contact Info Row -->
+        <hr class="my-4">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h5 class="fw-bold mb-3">Thông Tin Liên Hệ</h5>
+                <ul class="list-unstyled small mb-0">
+                    <li class="mb-2"><i class="fas fa-map-marker-alt text-orange me-2"></i>Địa chỉ: Ô diên , Hà Nội</li>
+                    <li class="mb-2"><i class="fas fa-phone text-orange me-2"></i>Điện thoại: +84 862 751 689</li>
+                    <li class="mb-2"><i class="fas fa-envelope text-orange me-2"></i>Email: ieltschool@gmail.com</li>
+                    <li class="mb-2"><i class="fas fa-clock text-orange me-2"></i>Giờ làm việc: Thứ 2 - Thứ 6, 9:00 - 18:00</li>
+                </ul>
+            </div>
+            <div class="col-lg-6 text-end">
+                <h5 class="fw-bold mb-3">Kết Nối Với Chúng Tôi</h5>
+                <div class="social-icons d-flex justify-content-end gap-2">
+                    <a href="index.php#home" class="btn btn-outline-light btn-sm"><i class="fas fa-home me-1"></i> Trang chủ</a>
+                    <a href="index.php#about" class="btn btn-outline-light btn-sm"><i class="fas fa-info-circle me-1"></i> Về chúng tôi</a>
+                    <a href="https://youtube.com" class="btn btn-danger btn-sm"><i class="fab fa-youtube me-1"></i> YouTube</a>
+                    <a href="https://facebook.com" class="btn btn-primary btn-sm"><i class="fab fa-facebook me-1"></i> Fanpage</a>
+                    <a href="login.php" class="btn btn-orange btn-sm"><i class="fas fa-sign-in-alt me-1"></i> Đăng nhập</a>
                 </div>
             </div>
+        </div>
+
+        <!-- Copyright -->
+        <hr class="my-4">
+        <div class="text-center">
+            <p class="mb-0 small">&copy; 2025 IELTS School. All Rights Reserved. | Designed by ddmq</p>
         </div>
     </div>
-
-    <div class="modal fade" id="servicesModal" tabindex="-1">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Dịch Vụ Của Chúng Tôi</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="accordion" id="servicesAccordion">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#s1">Hoạch định chiến lược</button></h2>
-                            <div id="s1" class="accordion-collapse collapse show" data-bs-parent="#servicesAccordion"><div class="accordion-body">Phát triển các chiến lược dài hạn toàn diện để gắn kết mục tiêu kinh doanh với cơ hội thị trường.</div></div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s2">Tối ưu hóa quy trình</button></h2>
-                            <div id="s2" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion"><div class="accordion-body">Tinh giản vận hành để nâng cao hiệu quả, giảm chi phí và cải thiện hiệu suất tổng thể.</div></div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#s3">Quản lý sự thay đổi</button></h2>
-                            <div id="s3" class="accordion-collapse collapse" data-bs-parent="#servicesAccordion"><div class="accordion-body">Hướng dẫn tổ chức của bạn vượt qua các giai đoạn chuyển đổi với sự gián đoạn tối thiểu và sự thích nghi tối đa.</div></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+</footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        // Animate numbers in stats section (nếu chưa có trong script.js)
+        document.addEventListener('DOMContentLoaded', function() {
+            const numbers = document.querySelectorAll('.number');
+            numbers.forEach(number => {
+                const target = parseFloat(number.getAttribute('data-target'));
+                const increment = target / 100; // Tốc độ animate
+                let current = 0;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    number.textContent = current.toFixed(target % 1 === 0 ? 0 : 1); // Định dạng số
+                }, 20);
+            });
+        });
+    </script>
 </body>
 </html>
