@@ -1,4 +1,6 @@
-// CHỨC NĂNG CƠ BẢN (Smooth Scrolling & Scroll Animation Observer)
+// =======================================================
+// CHỨC NĂNG CƠ BẢN
+// =======================================================
 
 // Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -11,149 +13,138 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 });
 
-// Scroll Animation Observer (cho các phần tử có class .scroll-animate)
+// Scroll Animation Observer
 const scrollObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry, index) => {
       if (entry.isIntersecting) {
-        // Add animate class for staggered effect
         setTimeout(() => {
           entry.target.classList.add("animate");
-        }, index * 100); // Delay based on index for stagger
-        // Giữ lại observer để các phần tử scroll-animate khác tiếp tục được quan sát
-        // Nếu muốn hiệu ứng chỉ chạy 1 lần, hãy thêm logic unobserve ở đây.
+        }, index * 100);
       }
     });
   },
   { threshold: 0.1 }
 );
 
-// Observe all scroll-animate elements
 document.querySelectorAll(".scroll-animate").forEach((el) => {
   scrollObserver.observe(el);
 });
 
-// HIỆU ỨNG ĐẾM SỐ LIỆU CHO PHẦN 'Our Key Achievements'
-function animateValue(obj, start, end, duration) {
-  let startTimestamp = null;
-  const step = (timestamp) => {
-    if (!startTimestamp) startTimestamp = timestamp;
-    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+// =======================================================
+// HIỆU ỨNG ĐẾM SỐ - PHẦN THÀNH TỰU
+// =======================================================
 
-    let displayValue;
-    const rawEndValue = parseFloat(end.replace(/[^0-9.]/g, "")); // Lấy giá trị số (ví dụ: 680, 1354, 97)
-
-    if (end.includes(".")) {
-      // Xử lý số thập phân nếu cần
-      displayValue = (progress * rawEndValue).toFixed(1);
+function animateCounter(element, endValue, duration) {
+  const startTime = performance.now();
+  
+  // Tách số và ký tự đặc biệt
+  const hasPercent = endValue.includes("%");
+  const hasPlus = endValue.includes("+");
+  const hasDot = endValue.includes(".");
+  
+  // Lấy số thuần túy
+  const targetNumber = parseFloat(endValue.replace(/[^0-9.]/g, ""));
+  
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    
+    // Tính giá trị hiện tại
+    let currentValue = progress * targetNumber;
+    
+    // Format số
+    let displayText;
+    if (hasDot) {
+      displayText = currentValue.toFixed(1);
     } else {
-      displayValue = Math.floor(progress * rawEndValue).toLocaleString("en-US"); // Thêm dấu phẩy cho số lớn
+      displayText = Math.floor(currentValue).toString();
     }
-
-    // Thêm lại dấu '+' hoặc '%' vào cuối
-    if (end.includes("+")) {
-      displayValue += "+";
-    } else if (end.includes("%")) {
-      displayValue += "%";
-    }
-
-    obj.textContent = displayValue;
-
+    
+    // Thêm ký tự đặc biệt
+    if (hasPlus) displayText += "+";
+    if (hasPercent) displayText += "%";
+    
+    element.textContent = displayText;
+    
+    // Tiếp tục animation
     if (progress < 1) {
-      window.requestAnimationFrame(step);
+      requestAnimationFrame(update);
     } else {
-      // Đảm bảo giá trị cuối cùng chính xác
-      obj.textContent = end;
+      element.textContent = endValue; // Đảm bảo giá trị cuối chính xác
     }
-  };
-  window.requestAnimationFrame(step);
+  }
+  
+  requestAnimationFrame(update);
 }
 
-function startCounterObserver() {
-  // Chỉ chạy hàm này một lần
+// Observer để kích hoạt animation khi scroll đến
+function initCounterAnimation() {
   let hasAnimated = false;
-
-  const observer = new IntersectionObserver(
-    (entries, observer) => {
+  
+  const counterObserver = new IntersectionObserver(
+    (entries) => {
       entries.forEach((entry) => {
-        // entry.target là phần tử .achievements-grid
         if (entry.isIntersecting && !hasAnimated) {
-          // Lấy tất cả các thẻ .number
-          const counterElements = entry.target.querySelectorAll(".number");
-
-          // Định nghĩa các số liệu tĩnh (cần khớp với HTML)
+          console.log("🎯 Counter animation triggered!");
+          
+          const numbers = entry.target.querySelectorAll(".number");
+          
+          // Dữ liệu IELTS
           const stats = [
-            {
-              element: counterElements[0],
-              end: "680+",
-              start: 0,
-              duration: 3000,
-            },
-            {
-              element: counterElements[1],
-              end: "1354+",
-              start: 0,
-              duration: 3500,
-            },
-            {
-              element: counterElements[2],
-              end: "97%",
-              start: 0,
-              duration: 3600,
-            },
-            {
-              element: counterElements[3],
-              end: "15+",
-              start: 0,
-              duration: 3700,
-            },
-            {
-              element: counterElements[4],
-              end: "$50M+",
-              start: 0,
-              duration: 4000,
-            },
+            { value: "2005+", duration: 2500 },
+            { value: "89%", duration: 2000 },
+            { value: "6.5+", duration: 2500 },
+            { value: "24+", duration: 2500 },
+            { value: "10+", duration: 2000 }
           ];
-
-          stats.forEach((stat) => {
-            animateValue(stat.element, stat.start, stat.end, stat.duration);
+          
+          // Bắt đầu animation cho từng số
+          numbers.forEach((num, index) => {
+            if (stats[index]) {
+              setTimeout(() => {
+                animateCounter(num, stats[index].value, stats[index].duration);
+              }, index * 100); // Delay mỗi số 100ms
+            }
           });
-
-          hasAnimated = true; // Đánh dấu đã chạy
-          observer.unobserve(entry.target); // Ngừng theo dõi
+          
+          hasAnimated = true;
+          counterObserver.unobserve(entry.target);
         }
       });
     },
-    {
-      threshold: 0.5, // Kích hoạt khi 50% phần tử nằm trong viewport
-    }
+    { threshold: 0.3 }
   );
-
-  // Bắt đầu theo dõi phần tử cha: .achievements-grid
-  const achievementsGrid = document.querySelector(".achievements-grid");
-  if (achievementsGrid) {
-    observer.observe(achievementsGrid);
+  
+  // Bắt đầu observe
+  const grid = document.querySelector(".achievements-grid");
+  if (grid) {
+    console.log("✅ Found achievements grid, observing...");
+    counterObserver.observe(grid);
+  } else {
+    console.error("❌ Cannot find .achievements-grid element!");
   }
 }
 
-// Chạy hàm observer đếm số khi DOM đã tải xong
-document.addEventListener("DOMContentLoaded", startCounterObserver);
-
 // =======================================================
-// XỬ LÝ FORM VÀ SLIDESHOW CƠ BẢN
+// SLIDESHOW HERO - Cải thiện với pause on hover
 // =======================================================
 
-// ĐÃ XÓA PHẦN MOCK LOGIN ĐỂ PHP XỬ LÝ
+const heroSlideshow = document.querySelector(".hero-slideshow");
+if (heroSlideshow) {
+  heroSlideshow.addEventListener("mouseenter", function () {
+    this.style.animationPlayState = "paused";
+  });
+  heroSlideshow.addEventListener("mouseleave", function () {
+    this.style.animationPlayState = "running";
+  });
+}
 
-// Pause slideshow khi hover
-document.addEventListener("DOMContentLoaded", () => {
-  const heroSlideshow = document.querySelector(".hero-slideshow");
-  if (heroSlideshow) {
-    heroSlideshow.addEventListener("mouseenter", function () {
-      this.style.animationPlayState = "paused";
-    });
-    heroSlideshow.addEventListener("mouseleave", function () {
-      this.style.animationPlayState = "running";
-    });
-  }
+// =======================================================
+// KHỞI ĐỘNG KHI DOM LOADED
+// =======================================================
+
+document.addEventListener("DOMContentLoaded", function() {
+  console.log("✅ DOM Loaded");
+  initCounterAnimation();
 });

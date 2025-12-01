@@ -6,8 +6,8 @@ require_once 'db_connect.php'; // Kết nối database để lấy tin tức
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DDMQ - Hệ thống Quản lý Nhân sự</title>
-    <meta name="description" content="DDMQ.vn: Tư vấn doanh nghiệp tận tâm, thúc đẩy thành công của bạn thông qua hoạch định chiến lược và quản lý tăng trưởng.">
+    <title>IELTS school</title>
+    <meta name="description" content="Ielts school - Nơi cung cấp các khóa học IELTS chất lượng cao với đội ngũ giảng viên giàu kinh nghiệm và phương pháp giảng dạy hiện đại.">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
@@ -17,21 +17,21 @@ require_once 'db_connect.php'; // Kết nối database để lấy tin tức
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#home">DDMQ.vn</a>
+            <a class="navbar-brand fw-bold" href="#home">IELTS school</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="#home">Trang chủ</a></li>
-                    <li class="nav-item"><a  a class="nav-link" href="#about">Về chúng tôi</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#servicesModal">Dịch vụ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Về chúng tôi</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#servicesModal">Dịch vụ</a></li> -->
                     <li class="nav-item"><a class="nav-link" href="#departments">Phòng ban</a></li>
                     <li class="nav-item"><a class="nav-link" href="#stats">Thống kê</a></li>
                     <li class="nav-item"><a class="nav-link" href="#news">Tin tức & Sự kiện</a></li>
                 </ul>
                 <div class="d-flex align-items-center">
-                    <a href="mailto:ddmq@gmail.com" class="me-3 text-white"><i class="bi bi-envelope"></i> ddmq@gmail.com</a>
+                    <a href="mailto:Ieltsschool@gmail.com" class="me-3 text-white"><i class="bi bi-envelope"></i> Ieltschool@gmail.com</a>
                     <a href="tel:+84 8627516189" class="me-3 text-white"><i class="bi bi-telephone"></i> +84 862 7516 189</a>
                     <a href="login.php" class="btn btn-orange ms-2">Đăng nhập</a>
                 </div>
@@ -39,22 +39,24 @@ require_once 'db_connect.php'; // Kết nối database để lấy tin tức
         </div>
     </nav>
 
-    <section id="home" class="hero pt-5 mt-5 hero-slideshow">
+    <section id="home" class="hero hero-slideshow">
         <div class="hero-overlay">
-            <h1 class="display-4 fw-bold mb-4">Về chúng tôi – Đơn vị tư vấn chiến lược dẫn lối thành công</h1>
-            <p class="lead mb-4">Với hơn 15 năm kinh nghiệm, chúng tôi giúp doanh nghiệp phát triển mạnh mẽ thông qua các chiến lược đổi mới và dữ liệu chuyên sâu.</p>
-            <a href="#about" class="btn btn-orange btn-lg">Tìm hiểu thêm</a>
+            <div class="container">
+                <h1 class="display-3 fw-bold mb-4 animate-hero-text">IELTS School – Đồng hành cùng học viên chinh phục IELTS 6.5+ dễ dàng</h1>
+                <p class="lead mb-4 fs-5 animate-hero-text delay-1">Khi đó giảng viên không chỉ có nhiệm vụ truyền đạt kiến thức cho học viên hiểu, mà còn phải định hướng học viên cách tiếp cận với IELTS một cách rõ ràng nhưng thú vị và đơn giản hơn, tạo sự hứng thú trong quá trình học tập.</p>
+                <a href="#about" class="btn btn-orange btn-lg px-5 py-3 animate-hero-text delay-2">Tìm hiểu thêm</a>
+            </div>
         </div>
     </section>
 
-    <section class="container py-5 fade-in">
+    <!-- <section class="container py-5 fade-in">
         <div class="row justify-content-center">
             <div class="col-md-3"><div class="stats-card scroll-animate"><h3>100</h3><p>Doanh nghiệp tại Việt Nam</p></div></div>
             <div class="col-md-3"><div class="stats-card scroll-animate"><h3>1,360</h3><p>Dự án được hoàn thành</p></div></div>
             <div class="col-md-3"><div class="stats-card scroll-animate"><h3>85%</h3><p>Đạt được thành tựu</p></div></div>
             <div class="col-md-3"><div class="stats-card scroll-animate"><h3>15</h3><p>Năm kinh nghiệm</p></div></div>
         </div>
-    </section>
+    </section> -->
 
     <section class="mission-vision" id="mission">
         <div class="container position-relative">
@@ -62,67 +64,173 @@ require_once 'db_connect.php'; // Kết nối database để lấy tin tức
             <div class="row">
                 <div class="col-md-6">
                     <div class="mv-card scroll-animate">
-                        <img src="img/mission1.jpg" alt="Focused consultant at desk discussing strategies" class="img-fluid mb-3 rounded">
-                        <h4>Sứ mệnh</h4>
-                        <p>Sứ mệnh của chúng tôi là trao quyền cho doanh nghiệp bằng những thông tin chi tiết dựa trên dữ liệu và chiến lược tăng trưởng bền vững, biến thách thức thành cơ hội.</p>
+                        <img src="img/giangvien.jpg" alt="Focused consultant at desk discussing strategies" class="img-fluid mb-3 rounded">
+                        <h4>Phương pháp giảng dạy độc quyền</h4>
+                        <p>Chúng tôi tự hào mang đến phương pháp giảng dạy IELTS được nghiên cứu và phát triển bởi đội ngũ giáo viên có điểm số IELTS 8.0+ với nhiều năm kinh nghiệm.</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="mv-card scroll-animate">
-                        <img src="img/vision1.jpg" alt="Team brainstorming innovative solutions in a meeting" class="img-fluid mb-3 rounded">
-                        <h4>Tầm nhìn</h4>
-                        <p>Chúng tôi hướng đến một thế giới nơi mọi doanh nghiệp đều đạt được tiềm năng tối đa thông qua sự dẫn dắt chuyên nghiệp và các giải pháp sáng tạo.</p>
+                        <img src="img/achi.jpg" alt="Team brainstorming innovative solutions in a meeting" class="img-fluid mb-3 rounded">
+                        <h4>Cam kết đầu ra rõ ràng</h4>
+                        <p>IELTS School cam kết đồng hành cùng học viên đến khi đạt mục tiêu, với chính sách rõ ràng và minh bạch.</p>
                     </div>
                 </div>
             </div>
-            <div class="text-center mt-4"><button class="play-btn">▶</button></div>
+            <!-- <div class="text-center mt-4"><button class="play-btn">▶</button></div> -->
         </div>
     </section>
 
     <section id="about" class="container py-5 fade-in">
-        <h2 class="text-center mb-5">Chúng tôi là ai</h2>
-        <p class="lead text-center mb-5">DDMQ.vn là công ty tư vấn kinh doanh hàng đầu với khát vọng biến thách thức thành cơ hội. Thành lập năm 2010, chúng tôi đã phục vụ hơn 1.000 khách hàng ở nhiều lĩnh vực, mang lại kết quả đo lường được.</p>
-        <div class="timeline">
-            <div class="timeline-item scroll-animate"><h5>2010</h5><p>Thành lập</p></div>
-            <div class="timeline-item scroll-animate"><h5>2015</h5><p>Mở rộng thị trường quốc tế</p></div>
-            <div class="timeline-item scroll-animate"><h5>2020</h5><p>Đạt 97% sự hài lòng của khách hàng</p></div>
+    <h2 class="text-center mb-5">Chúng tôi là ai</h2>
+    <p class="lead text-center mb-5">IELTS school - Nơi cung cấp các khóa học IELTS chất lượng cao với đội ngũ giảng viên giàu kinh nghiệm và phương pháp giảng dạy hiện đại.</p>
+    
+    <div class="timeline">
+        <div class="timeline-item scroll-animate">
+            <h5>2015</h5>
+            <p>Thành lập</p>
         </div>
-        <div class="text-center mt-4"><a href="#" class="btn btn-orange">Khám phá thêm</a></div>
-    </section>
-
-    <section id="departments" class="container py-5 fade-in">
-        <h2 class="text-center mb-5">Các phòng ban chuyên môn</h2>
-        
-        <?php
-        // Lấy danh sách phòng ban từ DB
-        $dept_query = $conn->query("SELECT * FROM departments");
-        ?>
-
-        <div class="dept-grid">
-            <?php while($dept = $dept_query->fetch_assoc()): ?>
-            <div class="dept-card scroll-animate">
-                <img src="<?php echo $dept['image']; ?>" alt="<?php echo $dept['name']; ?>" class="img-fluid mb-3 rounded" style="height: 200px; object-fit: cover; width: 100%;">
-                <h5><?php echo $dept['name']; ?></h5>
-                <p><?php echo $dept['description']; ?></p>
-                <a href="#" class="btn btn-orange btn-sm">Xem chi tiết</a>
-            </div>
-            <?php endwhile; ?>
+        <div class="timeline-item scroll-animate">
+            <h5>2020</h5>
+            <p>Mở rộng nhiều cơ sở ở Việt Nam</p>
         </div>
-    </section>
+        <div class="timeline-item scroll-animate">
+            <h5>2025</h5>
+            <p>Đạt trên 85% sự hài lòng của khách hàng</p>
+        </div>
+    </div>
+</section>
 
     <section id="stats" class="achievements fade-in">
-        <div class="container">
-            <h2 class="text-center mb-5">Thành tựu nổi bật</h2>
-            <div class="achievements-grid scroll-animate">
-                <div class="achievement-box"><div class="number">680+</div><div class="description">+ Khách hàng</div></div>
-                <div class="achievement-box"><div class="number">1354+</div><div class="description">Dự án hoàn thành</div></div>
-                <div class="achievement-box"><div class="number">97%</div><div class="description">% Tỷ lệ hài lòng</div></div>
-                <div class="achievement-box"><div class="number">15+</div><div class="description">Năm hoạt động</div></div>
-                <div class="achievement-box"><div class="number">$50M+</div><div class="description">Doanh thu tạo ra cho khách</div></div>
+    <div class="container">
+        <h2 class="text-center mb-5">Thành tựu nổi bật</h2>
+        <div class="achievements-grid scroll-animate">
+            <div class="achievement-box">
+                <div class="number">0</div>
+                <div class="description">Học viên đã đạt mục tiêu</div>
             </div>
-            <p class="text-center scroll-animate">Những cột mốc này phản ánh cam kết xuất sắc của chúng tôi.</p>
+            <div class="achievement-box">
+                <div class="number">0</div>
+                <div class="description">Tỷ lệ đạt điểm cam kết</div>
+            </div>
+            <div class="achievement-box">
+                <div class="number">0</div>
+                <div class="description">Là điểm IELTS trung bình</div>
+            </div>
+            <div class="achievement-box">
+                <div class="number">0</div>
+                <div class="description">Giáo viên đạt 7.5+ IELTS</div>
+            </div>
+            <div class="achievement-box">
+                <div class="number">0</div>
+                <div class="description">Năm kinh nghiệm đào tạo</div>
+            </div>
         </div>
-    </section>
+        <!-- ✅ PHẦN HỌC VIÊN ĐẠT KẾT QUẢ CAO - 4 HỌC VIÊN, MỖI SLIDE 1 NGƯỜI (ẢNH TRÁI, TEXT PHẢI) -->
+        <div class="top-students-section scroll-animate mt-5">
+            <h3 class="text-center mb-4 text-white">Học viên đạt kết quả cao</h3>
+            <div id="topStudentsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <?php
+                    // Chỉ 4 học viên demo
+                    $top_students = [
+                        ['name' => 'Hà Văn Dũng', 'image' => 'img/students/student1.jpg', 'score' => '8.0', 'testimonial' => 'Cảm ơn IELTS School đã giúp tôi đạt band 8.0 chỉ trong 3 tháng! Phương pháp học hiệu quả và giáo viên tận tâm.'],
+                        ['name' => 'Nguyễn Tiến Đạt', 'image' => 'img/students/student2.jpg', 'score' => '7.5', 'testimonial' => 'Phương pháp học thú vị, giáo viên tận tâm. Điểm Listening lên 9.0! Tôi rất hài lòng với lộ trình cá nhân hóa.'],
+                        ['name' => 'Nguyễn Minh Quân', 'image' => 'img/students/student3.jpg', 'score' => '7.0', 'testimonial' => 'Từ 5.0 lên 7.0, nhờ lộ trình cá nhân hóa. Trung tâm đã đồng hành sát sao, giúp tôi tự tin hơn trong kỳ thi.'],
+                        ['name' => 'Nguyễn Ngọc Mạnh', 'image' => 'img/students/student4.jpg', 'score' => '8.5', 'testimonial' => 'Tuyệt vời! Đã chinh phục Writing band 8.5. Cảm ơn đội ngũ giảng viên đã truyền cảm hứng học tập cho tôi.']
+                    ];
+                    $isActive = true;
+                    foreach($top_students as $student): ?>
+                    <div class="carousel-item <?php echo $isActive ? 'active' : ''; $isActive = false; ?>">
+                        <div class="container">
+                            <div class="row align-items-center student-slide">
+                                <div class="col-md-6 text-center mb-3 mb-md-0">
+                                    <img src="<?php echo $student['image']; ?>" alt="<?php echo $student['name']; ?>" class="img-fluid rounded-circle student-image">
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="mb-3"><?php echo $student['name']; ?></h5>
+                                    <p class="fw-bold text-orange mb-3 fs-4">IELTS <?php echo $student['score']; ?></p>
+                                    <p class="lead"><?php echo $student['testimonial']; ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#topStudentsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Trước</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#topStudentsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Sau</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section id="departments" class="container py-5 fade-in">
+    <h2 class="text-center mb-5">Các phòng ban chuyên môn</h2>
+    
+    <?php
+    // Lấy danh sách phòng ban từ DB
+    $dept_query = $conn->query("SELECT * FROM departments");
+    $all_departments = [];
+    while($dept = $dept_query->fetch_assoc()) {
+        $all_departments[] = $dept;
+    }
+    $total_depts = count($all_departments);
+    ?>
+
+    <div class="dept-grid">
+        <?php 
+        // ✅ CHỈ HIỂN THỊ 4 PHÒNG BAN ĐẦU TIÊN
+        for($i = 0; $i < min(4, $total_depts); $i++): 
+            $dept = $all_departments[$i];
+        ?>
+        <div class="dept-card scroll-animate">
+            <img src="<?php echo $dept['image']; ?>" alt="<?php echo $dept['name']; ?>" class="img-fluid mb-3 rounded">
+            <h5><?php echo $dept['name']; ?></h5>
+            <p><?php echo $dept['description']; ?></p>
+            <a href="#" class="btn btn-orange btn-sm">Xem chi tiết</a>
+        </div>
+        <?php endfor; ?>
+    </div>
+
+    <?php if($total_depts > 4): ?>
+    <!-- ✅ NÚT XEM THÊM (nếu có hơn 4 phòng ban) -->
+    <div class="text-center mt-4">
+        <button class="btn btn-orange" data-bs-toggle="modal" data-bs-target="#allDepartmentsModal">
+            Xem tất cả phòng ban (<?php echo $total_depts; ?>)
+        </button>
+    </div>
+    <?php endif; ?>
+</section>
+
+<!-- ✅ MODAL HIỂN THỊ TẤT CẢ PHÒNG BAN -->
+<div class="modal fade" id="allDepartmentsModal" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Tất cả các phòng ban chuyên môn</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="dept-grid">
+                    <?php foreach($all_departments as $dept): ?>
+                    <div class="dept-card">
+                        <img src="<?php echo $dept['image']; ?>" alt="<?php echo $dept['name']; ?>" class="img-fluid mb-3 rounded">
+                        <h5><?php echo $dept['name']; ?></h5>
+                        <p><?php echo $dept['description']; ?></p>
+                        <a href="#" class="btn btn-orange btn-sm">Xem chi tiết</a>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     
     <section class="sponsors-section fade-in">
         <div class="container py-4">

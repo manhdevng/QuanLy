@@ -37,41 +37,106 @@ body {
   color: white;
 }
 
+/* Hero Section - Đã chỉnh sửa để full width và đẹp hơn */
 .hero {
-  background: url("img/aboutus.png") no-repeat center/cover;
-  height: 80vh;
-  color: white;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin-left: calc(-50vw + 50%);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  overflow: hidden;
+  background: linear-gradient(rgba(0, 51, 102, 0.4), rgba(0, 51, 102, 0.6)), url("/QuanLy/HomePage/img/english.jpg") no-repeat center/cover fixed;
+  color: white;
+  z-index: 1;
 }
 
-/* Hero Slideshow */
+/* Hero Slideshow - Cải thiện animation mượt hơn */
 .hero-slideshow {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  animation: slideshow 9s infinite;
+  animation: slideshow 12s infinite ease-in-out;
 }
 
 @keyframes slideshow {
-  0%,
-  50% {
-    background-image: url("img/aboutus.png");
+  0%, 45% {
+    background-image: linear-gradient(rgba(0, 51, 102, 0.4), rgba(0, 51, 102, 0.6)), url("img/english.jpg");
   }
-  50.01%,
-  100% {
-    background-image: url("img/aboutus3.png");
+  55%, 100% {
+    background-image: linear-gradient(rgba(0, 51, 102, 0.4), rgba(0, 51, 102, 0.6)), url("img/woman.jpg");
   }
 }
 
-/* Hero overlay giữ nguyên để text overlay mượt */
+/* Hero overlay - Làm mờ và căn giữa tốt hơn */
 .hero-overlay {
-  background: rgba(0, 51, 102, 0.7);
-  padding: 2rem;
-  /* Thêm transition để overlay fade nhẹ nếu cần */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 51, 102, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
   transition: opacity 0.5s ease-in-out;
+  z-index: 2;
+}
+
+.hero-overlay .container {
+  max-width: 1200px;
+  padding: 0;
+}
+
+/* Animation cho text hero - Làm đẹp hơn với staggered effect */
+.animate-hero-text {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.3s;
+}
+
+.delay-2 {
+  animation-delay: 0.6s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero h1 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.hero p {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  font-size: 1.25rem;
+}
+
+.hero .btn {
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.hero .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 102, 0, 0.4);
 }
 
 .stats-card {
@@ -83,6 +148,9 @@ body {
   border-radius: 8px;
 }
 
+/* ----------------------------------- */
+/* MISSION VISION - KHÁM PHÁ CỐT LÕI */
+/* ----------------------------------- */
 .mission-vision {
   background: linear-gradient(to right, var(--blue), #004488);
   color: white;
@@ -106,24 +174,89 @@ body {
   border-radius: 8px;
   margin: 1rem;
   backdrop-filter: blur(10px);
+  /* ✅ THÊM ĐỂ ĐỒNG NHẤT CHIỀU CAO */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
+.mv-card img {
+  width: 100%;
+  height: 250px; /* ✅ Cố định chiều cao ảnh */
+  object-fit: cover; /* ✅ Crop ảnh đẹp không méo */
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.mv-card h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.mv-card p {
+  flex-grow: 1; /* ✅ Cho text mở rộng hết không gian */
+  line-height: 1.6;
+}
+
+/* ----------------------------------- */
+/* TIMELINE - CHÚNG TÔI LÀ AI */
+/* ----------------------------------- */
 .timeline {
   display: flex;
   justify-content: space-around;
+  align-items: flex-start; /* ✅ Căn đầu */
   flex-wrap: wrap;
+  gap: 2rem; /* ✅ Khoảng cách */
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .timeline-item {
   text-align: center;
-  width: 20%;
-  margin: 1rem;
+  flex: 1; /* ✅ Chia đều */
+  min-width: 200px;
+  position: relative;
+  padding: 1rem;
 }
+
+.timeline-item h5 {
+  font-size: 2rem; /* ✅ Tăng size năm */
+  font-weight: 700;
+  color: var(--blue);
+  margin-bottom: 0.5rem;
+}
+
+.timeline-item p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* ✅ Đường kẻ ngang giữa các mốc */
+.timeline-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 2.5rem;
+  right: -1rem;
+  width: 2rem;
+  height: 2px;
+  background: var(--orange);
+}
+
+/* ----------------------------------- */
+/* CÁC PHÒNG BAN CHUYÊN MÔN - ĐÃ SỬA */
+/* ----------------------------------- */
 
 .dept-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(4, 1fr); /* ✅ CỐ ĐỊNH 4 CỘT */
   gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: stretch; /* Đảm bảo card cao bằng nhau */
 }
 
 .dept-card {
@@ -131,109 +264,282 @@ body {
   padding: 1.5rem;
   border-radius: 8px;
   text-align: center;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Đảm bảo cao bằng nhau */
+  background: white;
 }
 
 .dept-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px); /* Nổi lên thay vì scale */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* ----------------------------------- */
-/* CSS MỚI: Phần Key Achievements (5 Boxes) */
-/* ----------------------------------- */
+.dept-card img {
+  width: 100%;
+  height: 200px; /* Cố định chiều cao ảnh */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
 
+.dept-card h5 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--blue);
+  flex-shrink: 0;
+}
+
+.dept-card p {
+  flex-grow: 1; /* Cho text mở rộng */
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.dept-card .btn {
+  margin-top: auto; /* Đẩy button xuống dưới */
+  flex-shrink: 0;
+}
+
+/* Responsive cho Departments */
+@media (max-width: 1200px) {
+  .dept-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 cột trên tablet lớn */
+  }
+}
+
+@media (max-width: 768px) {
+  .dept-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cột trên tablet/mobile */
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .dept-grid {
+    grid-template-columns: 1fr; /* 1 cột trên điện thoại */
+    gap: 1rem;
+  }
+}
+/* ----------------------------------- */
+/* THÀNH TỰU NỔI BẬT - ĐÃ SỬA */
+/* ----------------------------------- */
 .achievements {
-  padding: 4rem 0;
-  background: #f8f9fa;
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #003366 0%, #0066cc 100%); /* ✅ Xanh IELTS */
+  position: relative;
+  overflow: hidden;
 }
 
-/* Bố cục chính: Sử dụng CSS Grid để tạo 5 cột */
+.achievements::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.achievements h2 {
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+.achievements p {
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  z-index: 1;
+}
+
 .achievements-grid {
   display: grid;
-  /* Tạo 5 cột bằng nhau trên màn hình lớn */
   grid-template-columns: repeat(5, 1fr);
-  gap: 20px; /* Khoảng cách giữa các box */
+  gap: 25px;
   max-width: 1200px;
   margin: 2rem auto;
+  position: relative;
+  z-index: 1;
 }
 
-/* Thiết kế cho mỗi box thành tựu */
 .achievement-box {
-  background-color: #0c366e; /* Màu xanh đậm giống trong ảnh */
-  color: white;
-  padding: 30px 15px;
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.95); /* ✅ Nền trắng mờ */
+  color: #333;
+  padding: 35px 20px;
+  border-radius: 12px; /* ✅ Bo góc mềm */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  min-height: 150px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* ✅ Bóng đẹp */
+  min-height: 180px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.achievement-box:hover {
+  transform: translateY(-10px); /* ✅ Nổi lên */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  border-color: var(--orange);
+  background: white;
 }
 
 .achievement-box .number {
-  font-size: 48px;
-  font-weight: 700; /* Rất đậm */
-  margin-bottom: 5px;
-  line-height: 1.1;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  line-height: 1;
+  color: var(--blue); /* ✅ Số màu xanh */
+}
+
+.achievement-box:hover .number {
+  color: var(--orange); /* ✅ Hover đổi cam */
 }
 
 .achievement-box .description {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.3;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.4;
   text-align: center;
-  opacity: 0.9;
+  color: #555;
+}
+
+/* ✅ PHẦN HỌC VIÊN ĐẠT KẾT QUẢ CAO - SỬA LỆCH BẰNG CÁCH STRETCH VÀ FIX HEIGHT */
+.top-students-section h3 {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.students-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* ✅ NẰM NGANG: 4 CỘT CHO DESKTOP */
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  align-items: stretch; /* ✅ SỬA LỆCH: Làm card cao bằng nhau */
+}
+
+.student-card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%; /* ✅ SỬA LỆCH: Đảm bảo cao bằng nhau */
+  justify-content: space-between; /* ✅ Phân bố nội dung đều */
+}
+
+.student-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 3px solid var(--orange);
+  flex-shrink: 0; /* Không co ảnh */
+}
+
+.student-card h6 {
+  margin: 1rem 0 0.5rem;
+  color: var(--blue);
+  font-weight: 600;
+  flex-shrink: 0; /* Không co tên */
+}
+
+.text-orange {
+  color: var(--orange) !important;
+  flex-shrink: 0; /* Không co điểm số */
+}
+
+.student-card p {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin: 0;
+  flex-grow: 1; /* ✅ SỬA LỆCH: Text stretch để lấp đầy không gian, tránh lệch */
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Giới hạn 3 dòng để tránh text dài làm lệch */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Responsive cho Students Grid - Giữ ngang nhưng giảm cột trên mobile */
+@media (max-width: 1200px) {
+  .students-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 cột trên tablet lớn */
+  }
+}
+
+@media (max-width: 768px) {
+  .students-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cột trên tablet/mobile - VẪN NGANG */
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .students-grid {
+    grid-template-columns: repeat(1, 1fr); /* 1 cột trên điện thoại nhỏ - Chuyển dọc nếu cần */
+  }
+  .student-card img {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 /* ----------------------------------- */
-/* Cập nhật CSS cho NEWS (3 cột và Carousel) */
+/* NEWS SECTION - ĐÃ SỬA */
 /* ----------------------------------- */
 .news-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 cột trên desktop */
-  gap: 20px; /* Khoảng cách giữa các tin tức */
+  grid-template-columns: repeat(3, 1fr); /* ✅ Luôn 3 cột */
+  gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
-  align-items: stretch; /* Đảm bảo các card trong hàng có chiều cao bằng nhau */
+  align-items: stretch;
 }
 
 .news-card {
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
-  transition: box-shadow 0.3s;
-  /* Dùng Flexbox để căn chỉnh nội dung và nút Read More */
+  transition: box-shadow 0.3s, transform 0.3s;
   display: flex;
   flex-direction: column;
-  height: 450px; /* Chiều cao cố định để đảm bảo đồng đều */
+  height: 100%;
+  background: white;
 }
 
 .news-card:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
 }
 
 .news-card img {
   width: 100%;
-  height: 180px; /* Chiều cao cố định cho ảnh */
-  object-fit: cover; /* Đảm bảo ảnh không bị giãn méo */
-  flex-shrink: 0; /* Không cho ảnh co lại */
+  height: 200px; /* ✅ Cố định chiều cao */
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
-/* Đảm bảo nội dung căn chỉnh và nút Read More xuống cuối */
 .news-content {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-  overflow: hidden; /* Ẩn nội dung thừa nếu vượt quá */
-}
-
-.news-btn {
-  margin-top: auto; /* Đẩy nút xuống dưới cùng */
-  align-self: flex-start; /* Giữ nút căn trái */
-  flex-shrink: 0; /* Không cho nút co lại */
+  padding: 1.5rem;
+  overflow: hidden;
 }
 
 .news-title {
@@ -242,24 +548,42 @@ body {
   margin-bottom: 0.5rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
-  line-clamp: 2; /* <--- THÊM DÒNG NÀY (giá trị giống dòng trên) */
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   flex-shrink: 0;
+  color: #333;
 }
 
 .news-desc {
   flex-grow: 1;
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  line-clamp: 3; /* <--- THÊM DÒNG NÀY (giá trị giống dòng trên) */
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin-bottom: 1rem;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.news-btn {
+  margin-top: auto;
+  align-self: flex-start;
+  flex-shrink: 0;
+}
+
+/* ✅ Đảm bảo Carousel không bị wrap */
+#newsCarousel .carousel-inner {
+  overflow: visible;
+}
+
+#newsCarousel .carousel-item {
+  transition: transform 0.6s ease-in-out;
 }
 
 /* ----------------------------------- */
-/* CSS cho MŨI TÊN CAROUSEL (Custom Style) */
+/* CAROUSEL CONTROLS */
 /* ----------------------------------- */
 .carousel-control-prev,
 .carousel-control-next {
@@ -269,12 +593,12 @@ body {
   transition: opacity 0.3s ease;
   top: 50%;
   transform: translateY(-50%);
-  background: transparent; /* Xóa nền */
+  background: transparent;
   border: none;
 }
 
 .carousel-control-next {
-  right: -50px; /* Đẩy ra ngoài container để không che nội dung */
+  right: -50px;
 }
 
 .carousel-control-prev {
@@ -286,14 +610,12 @@ body {
   opacity: 1;
 }
 
-/* Custom icon style */
 .carousel-control-next-icon,
 .carousel-control-prev-icon {
   width: 20px;
   height: 20px;
   background-size: 100%, 100%;
-  /* Dùng filter để chuyển màu trắng mặc định của Bootstrap icon sang màu đen/xám */
-  filter: invert(30%); /* Tạo màu xám đậm */
+  filter: invert(30%);
 }
 
 .cta-banner {
@@ -325,7 +647,6 @@ body {
   transform: translateY(0);
 }
 
-/* Staggered animation for multiple elements */
 .scroll-animate:nth-child(1) {
   transition-delay: 0.1s;
 }
@@ -342,109 +663,31 @@ body {
   transition-delay: 0.5s;
 }
 
-@media (max-width: 1200px) {
-  .achievements-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  /* Chuyển 3 cột news thành 2 cột trên tablet lớn */
-  .news-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .carousel-control-next {
-    right: -25px;
-  }
-  .carousel-control-prev {
-    left: -25px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero {
-    height: 60vh;
-  }
-
-  .timeline {
-    flex-direction: column;
-  }
-
-  .timeline-item {
-    width: 100%;
-  }
-
-  .achievements-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  /* News grid stack trên mobile */
-  .news-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .news-card {
-    height: auto; /* Trên mobile, cho phép tự do chiều cao */
-  }
-
-  /* Đưa nút carousel vào sát viền màn hình trên mobile */
-  .carousel-control-next {
-    right: 0;
-  }
-  .carousel-control-prev {
-    left: 0;
-  }
-}
-
-@media (max-width: 576px) {
-  /* Trên điện thoại, chuyển achievements thành 1 cột */
-  .achievements-grid {
-    grid-template-columns: 1fr;
-  }
-  .achievement-box .number {
-    font-size: 40px;
-  }
-}
-
-.fade-in {
-  animation: fadeIn 1s ease-in;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* ----------------------------------- */
-/* CSS MỚI CHO SPONSORS (Dòng chạy ngang) */
+/* SPONSORS SECTION */
 /* ----------------------------------- */
 .sponsors-section {
-  background: #fff; /* Đổi thành trắng sạch, không màu xám */
+  background: #fff;
 }
 
 .sponsors-container {
   overflow: hidden;
   white-space: nowrap;
   padding: 20px 0;
-  height: 60px; /* Thêm chiều cao cố định để căn giữa */
-  display: flex; /* Sử dụng flexbox để căn giữa dọc */
-  align-items: center; /* Căn giữa theo chiều dọc */
-  line-height: 60px; /* Backup cho vertical-align nếu cần */
+  height: 60px;
+  display: flex;
+  align-items: center;
+  line-height: 60px;
 }
 
 .sponsors-marquee {
   display: inline-block;
-  animation: scroll-left 50s linear infinite; /* Chậm hơn: từ 35s lên 50s */
-  vertical-align: middle; /* Căn giữa dọc cho marquee */
+  animation: scroll-left 50s linear infinite;
+  vertical-align: middle;
 }
 
 .sponsors-marquee:hover {
-  animation-play-state: paused; /* Dừng khi hover */
+  animation-play-state: paused;
 }
 
 @keyframes scroll-left {
@@ -458,48 +701,26 @@ body {
 
 .sponsor-logo {
   display: inline-block;
-  margin: 0 60px; /* Tăng khoảng cách giữa các logo: từ 40px lên 60px */
-  height: 40px; /* Chiều cao thống nhất */
-  vertical-align: middle; /* Căn giữa dọc cho logo */
-  /* Thêm để đảm bảo căn chỉnh tốt hơn cho tất cả logo (SVG và JPG) */
+  margin: 0 60px;
+  height: 40px;
+  vertical-align: middle;
   line-height: 40px;
 }
 
 .sponsor-logo img {
   height: 100%;
   width: auto;
-  max-height: 40px; /* Giới hạn max để tránh overflow nếu SVG có vấn đề */
-  opacity: 0.8; /* Làm mờ nhẹ để giống Edupia */
+  max-height: 40px;
+  opacity: 0.8;
   transition: opacity 0.3s;
-  display: block; /* Đảm bảo img là block để căn chỉnh tốt hơn */
-  margin: 0 auto; /* Căn giữa ngang nếu cần */
+  display: block;
+  margin: 0 auto;
 }
 
 .sponsor-logo img:hover {
   opacity: 1;
 }
 
-/* Responsive cho sponsors */
-@media (max-width: 768px) {
-  .sponsor-logo {
-    margin: 0 30px; /* Giảm margin trên mobile nhưng vẫn tăng so với gốc */
-  }
-  .sponsors-marquee {
-    animation-duration: 40s; /* Chậm hơn trên mobile: từ 25s lên 40s */
-  }
-  .sponsors-container {
-    height: 50px; /* Giảm chiều cao trên mobile */
-    line-height: 50px;
-  }
-  .sponsor-logo {
-    height: 35px; /* Giảm height trên mobile */
-  }
-  .sponsor-logo img {
-    max-height: 35px;
-  }
-}
-
-/* CSS cho button Đọc Thêm (áp dụng cho news section) */
 .read-more-btn {
   background-color: #ff8c00;
   color: white;
@@ -515,21 +736,19 @@ body {
   color: white;
 }
 
-/* CSS cho phần Contact footer - Cập nhật cho đẹp hơn */
+/* ----------------------------------- */
+/* CONTACT FOOTER */
+/* ----------------------------------- */
 .contact-footer {
-  background: linear-gradient(
-    135deg,
-    #f8f9fa 0%,
-    #e9ecef 100%
-  ); /* Gradient nhẹ từ xám nhạt sang trắng */
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   color: #333;
-  border-top: 1px solid #dee2e6; /* Đường viền trên nhẹ nhàng */
+  border-top: 1px solid #dee2e6;
   font-size: 0.95rem;
 }
 
 .contact-footer h5.footer-title {
-  color: var(--blue); /* #003366 */
-  margin-bottom: 1.5rem; /* Tăng khoảng cách */
+  color: var(--blue);
+  margin-bottom: 1.5rem;
   font-weight: 600;
   position: relative;
 }
@@ -541,19 +760,19 @@ body {
   left: 0;
   width: 50px;
   height: 2px;
-  background: var(--orange); /* Đường gạch chân cam */
+  background: var(--orange);
   border-radius: 1px;
 }
 
 .contact-info {
-  line-height: 1.8; /* Tăng line-height cho dễ đọc */
+  line-height: 1.8;
 }
 
 .contact-item {
-  margin-bottom: 0.75rem; /* Khoảng cách giữa các item */
+  margin-bottom: 0.75rem;
   display: flex;
   align-items: flex-start;
-  transition: color 0.3s ease; /* Hiệu ứng hover nhẹ */
+  transition: color 0.3s ease;
 }
 
 .contact-item:hover {
@@ -561,86 +780,160 @@ body {
 }
 
 .contact-item i.icon-orange {
-  color: var(--orange); /* Cam cho icon */
-  font-size: 1.1rem; /* Lớn hơn một chút */
-  width: 20px; /* Cố định width để căn chỉnh */
-  margin-right: 0.75rem; /* Tăng me-2 thành 0.75rem */
+  color: var(--orange);
+  font-size: 1.1rem;
+  width: 20px;
+  margin-right: 0.75rem;
 }
 
 .social-icons {
   display: flex;
-  justify-content: flex-start; /* Căn trái trên desktop */
+  justify-content: flex-start;
   flex-wrap: wrap;
-  gap: 0.75rem; /* Khoảng cách nhỏ hơn, đẹp hơn */
-  margin-top: 0; /* Loại bỏ margin-top cũ */
+  gap: 0.75rem;
+  margin-top: 0;
 }
 
 .icon-btn {
-  display: inline-flex; /* Sử dụng inline-flex cho mượt */
+  display: inline-flex;
   align-items: center;
   text-decoration: none;
   color: #333;
-  padding: 0.75rem 1.25rem; /* Tăng padding cho pill shape */
+  padding: 0.75rem 1.25rem;
   border: 1px solid #dee2e6;
-  border-radius: 50px; /* Pill shape bo tròn hơn */
+  border-radius: 50px;
   background-color: #fff;
   font-size: 0.9rem;
   font-weight: 500;
-  transition: all 0.3s ease; /* Hiệu ứng hover mượt */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Bóng nhẹ */
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .icon-btn:hover {
-  background-color: var(--orange); /* Đổi nền cam khi hover */
+  background-color: var(--orange);
   color: white;
   border-color: var(--orange);
-  transform: translateY(-2px); /* Nâng nhẹ lên */
-  box-shadow: 0 4px 8px rgba(255, 102, 0, 0.2); /* Bóng cam */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 102, 0, 0.2);
 }
 
 .icon-btn i {
   font-size: 1rem;
-  margin-right: 0.5rem; /* Giảm me-2 cho gọn */
+  margin-right: 0.5rem;
   transition: color 0.3s ease;
 }
 
 .icon-btn:hover i {
-  color: white; /* Icon trắng khi hover */
+  color: white;
 }
 
-/* Divider */
 .divider {
   border: none;
   height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    #e3f2fd,
-    transparent
-  ); /* Gradient xanh nhạt hơn */
+  background: linear-gradient(to right, transparent, #e3f2fd, transparent);
   opacity: 0.6;
 }
 
-/* Copyright */
 .copyright p {
   font-size: 0.85rem;
-  color: #6c757d; /* Xám nhạt */
-  font-style: italic; /* Italic cho sang trọng */
+  color: #6c757d;
+  font-style: italic;
 }
 
-/* Responsive cho contact footer */
+.fade-in {
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ----------------------------------- */
+/* RESPONSIVE - Cập nhật cho Hero */
+/* ----------------------------------- */
+
+@media (max-width: 1200px) {
+  .achievements-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .carousel-control-next {
+    right: -25px;
+  }
+  .carousel-control-prev {
+    left: -25px;
+  }
+}
+
 @media (max-width: 768px) {
+  .hero {
+    height: 80vh;
+    background-attachment: scroll; /* Tránh fixed trên mobile */
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  /* ✅ Timeline chuyển dọc trên mobile */
+  .timeline {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .timeline-item {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .timeline-item:not(:last-child)::after {
+    display: none;
+  }
+
+  .achievements-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .news-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .news-card {
+    height: auto;
+  }
+
+  .carousel-control-next {
+    right: 0;
+  }
+  .carousel-control-prev {
+    left: 0;
+  }
+
   .contact-footer {
-    padding: 2rem 0; /* Giảm padding trên mobile */
+    padding: 2rem 0;
   }
 
   .social-icons {
-    justify-content: center; /* Căn giữa trên mobile */
+    justify-content: center;
     gap: 0.5rem;
   }
 
   .icon-btn {
-    padding: 0.5rem 1rem; /* Nhỏ hơn trên mobile */
+    padding: 0.5rem 1rem;
     font-size: 0.85rem;
   }
 
@@ -650,16 +943,52 @@ body {
 
   .footer-title::after {
     left: 50%;
-    transform: translateX(-50%); /* Căn giữa đường gạch chân trên mobile */
+    transform: translateX(-50%);
+  }
+
+  .sponsor-logo {
+    margin: 0 30px;
+  }
+  .sponsors-marquee {
+    animation-duration: 40s;
+  }
+  .sponsors-container {
+    height: 50px;
+    line-height: 50px;
+  }
+  .sponsor-logo {
+    height: 35px;
+  }
+  .sponsor-logo img {
+    max-height: 35px;
+  }
+
+  .hero-overlay {
+    padding: 0 1rem;
   }
 }
 
 @media (max-width: 576px) {
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+  .achievement-box .number {
+    font-size: 2.2rem;
+  }
+
   .contact-info {
-    text-align: center; /* Căn giữa trên điện thoại nhỏ */
+    text-align: center;
   }
 
   .contact-item {
     justify-content: center;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
   }
 }
